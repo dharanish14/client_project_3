@@ -1,0 +1,6 @@
+:root{--navy:#132D4D;--teal:#3BA2A0}
+body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;color:#132D4D}
+.container{max-width:980px;margin:0 auto;padding:24px}
+.site-header{background:var(--navy);color:#fff;padding:12px 0}
+.site-header .brand{color:#fff;text-decoration:none;font-weight:700}
+.site-footer{border-top:1px solid #eee;padding:20px 0;margin-top:40px}
