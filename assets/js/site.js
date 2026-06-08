@@ -14,6 +14,7 @@
       ],
     },
     { label: 'Impact', href: '/impact/', key: 'impact' },
+    { label: 'Events', href: '/events/', key: 'events' },
     { label: 'Blog', href: '/blog/', key: 'blog' },
     { label: 'Gallery', href: '/gallery/', key: 'gallery' },
     { label: 'Join', href: '/join/', key: 'join' },
@@ -21,7 +22,7 @@
   ];
 
   const footerLinks = [
-    'Home', 'About', 'Programs', 'Impact', 'Blog', 'Gallery', 'Join', 'Contact'
+    'Home', 'About', 'Programs', 'Impact', 'Events', 'Blog', 'Gallery', 'Join', 'Contact'
   ];
 
   const iconMarkup = (name) => `<i data-lucide="${name}" aria-hidden="true"></i>`;
