@@ -28,6 +28,8 @@
   const iconMarkup = (name) => `<i data-lucide="${name}" aria-hidden="true"></i>`;
 
   const formEndpoints = window.NUNP_FORM_ENDPOINTS || {};
+  const activeMembersKey = 'nunp-active-members-count';
+  const defaultActiveMembers = 100;
 
   const sendViaEndpoint = async (endpoint, form) => {
     const response = await fetch(endpoint, {
@@ -40,6 +42,22 @@
       throw new Error(`Request failed with ${response.status}`);
     }
   };
+
+  const getActiveMembersCount = () => {
+    const storedValue = Number(window.localStorage.getItem(activeMembersKey));
+    return Number.isFinite(storedValue) && storedValue >= defaultActiveMembers ? storedValue : defaultActiveMembers;
+  };
+
+  const setActiveMembersCount = (value) => {
+    const nextValue = Math.max(defaultActiveMembers, Number(value) || defaultActiveMembers);
+    window.localStorage.setItem(activeMembersKey, String(nextValue));
+    document.querySelectorAll('[data-active-members-count]').forEach((node) => {
+      node.textContent = nextValue.toLocaleString();
+    });
+    return nextValue;
+  };
+
+  const incrementActiveMembersCount = () => setActiveMembersCount(getActiveMembersCount() + 1);
 
   const header = `
     <header class="site-header">
@@ -237,8 +255,16 @@
         event.preventDefault();
         const formKey = form.dataset.formKey || '';
         const endpoint = form.dataset.formEndpoint || formEndpoints[formKey] || '';
+        const isJoinForm = formKey === 'join';
+
+        if (isJoinForm) incrementActiveMembersCount();
 
         if (endpoint) {
+          if (endpoint.includes('your-form-id')) {
+            form.reset();
+            window.alert('Thanks! (Demo Mode: Form submitted successfully and member count updated).');
+            return;
+          }
           sendViaEndpoint(endpoint, form)
             .then(() => {
               form.reset();
@@ -284,6 +310,7 @@
 
   const init = () => {
     injectCommonLayout();
+    setActiveMembersCount(getActiveMembersCount());
     setActiveNav();
     enhanceMobileNav();
     enhanceReveal();

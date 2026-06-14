@@ -12,6 +12,154 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+    /* Floating Box styles */
+    .active-members-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid rgba(19, 45, 77, 0.12);
+      box-shadow: 0 10px 30px rgba(19, 45, 77, 0.08), 0 2px 6px rgba(19, 45, 77, 0.04);
+      text-align: left;
+      position: relative;
+      z-index: 10;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .active-members-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(19, 45, 77, 0.14);
+    }
+
+    .active-members-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #2ee67a;
+      flex: 0 0 auto;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Pulsing/blinking effect for green light */
+    .active-members-dot::after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #2ee67a;
+      opacity: 0.8;
+      animation: active-dot-pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+
+    @keyframes active-dot-pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.85;
+      }
+      50% {
+        opacity: 0.45;
+      }
+      100% {
+        transform: scale(2.8);
+        opacity: 0;
+      }
+    }
+
+    .active-members-copy {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .active-members-count {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #132D4D;
+      line-height: 1;
+    }
+
+    .active-members-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #5f7082;
+      text-transform: none;
+    }
+
+    /* Volunteer Intro Animated Card */
+    .volunteer-intro-card {
+      background: linear-gradient(135deg, rgba(59, 162, 160, 0.08), rgba(19, 45, 77, 0.05));
+      border: 2px dashed rgba(59, 162, 160, 0.3);
+      border-radius: 20px;
+      padding: 34px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(19, 45, 77, 0.04);
+    }
+
+    .volunteer-intro-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .volunteer-intro-card:hover {
+      transform: translateY(-4px);
+      border-style: solid;
+      border-color: #3BA2A0;
+      box-shadow: 0 20px 40px rgba(59, 162, 160, 0.12);
+      background: linear-gradient(135deg, rgba(59, 162, 160, 0.12), rgba(19, 45, 77, 0.07));
+    }
+
+    .volunteer-intro-card:hover::before {
+      left: 100%;
+      transition: all 1.2s ease;
+    }
+
+    .volunteer-intro-card .icon-badge {
+      background: #3BA2A0;
+      color: #ffffff;
+      transform: scale(1.1);
+      box-shadow: 0 8px 24px rgba(59, 162, 160, 0.35);
+      margin: 0 auto 20px;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .volunteer-intro-card:hover .icon-badge {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .volunteer-intro-card h3 {
+      font-size: 1.5rem;
+      color: #132D4D;
+      margin-bottom: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    .volunteer-intro-card p {
+      color: #5f7082;
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body data-page="join">
   <div data-site-header></div>
@@ -24,25 +172,31 @@
       </div>
     </section>
 
-    <section class="section section-alt">
-      <div class="container">
-        <div class="section-header reveal" data-aos="fade-up"><div class="eyebrow">Join As</div><h2>Join As</h2></div>
-        <div class="role-grid">
-          <button class="role-card reveal" type="button" data-role-card="Volunteer" data-aos="fade-up"><div class="icon-badge"><i data-lucide="handshake"></i></div><h4>Volunteer</h4></button>
-          <button class="role-card reveal" type="button" data-role-card="Youth Fellow" data-aos="fade-up" data-aos-delay="40"><div class="icon-badge"><i data-lucide="graduation-cap"></i></div><h4>Youth Fellow</h4></button>
-          <button class="role-card reveal" type="button" data-role-card="Campus Ambassador" data-aos="fade-up" data-aos-delay="80"><div class="icon-badge"><i data-lucide="school"></i></div><h4>Campus Ambassador</h4></button>
-          <button class="role-card reveal" type="button" data-role-card="Community Coordinator" data-aos="fade-up" data-aos-delay="120"><div class="icon-badge"><i data-lucide="map-pin"></i></div><h4>Community Coordinator</h4></button>
-          <button class="role-card reveal" type="button" data-role-card="Partner Organization" data-aos="fade-up"><div class="icon-badge"><i data-lucide="handshake"></i></div><h4>Partner Organization</h4></button>
-          <button class="role-card reveal" type="button" data-role-card="Corporate Partner" data-aos="fade-up" data-aos-delay="40"><div class="icon-badge"><i data-lucide="building-2"></i></div><h4>Corporate Partner</h4></button>
-          <button class="role-card reveal" type="button" data-role-card="Supporter" data-aos="fade-up" data-aos-delay="80"><div class="icon-badge"><i data-lucide="heart"></i></div><h4>Supporter</h4></button>
-        </div>
-        <div class="message-panel" style="margin-top: 18px;" data-role-output>Select a role to see a message here.</div>
-      </div>
-    </section>
 
     <section class="section">
       <div class="container">
         <div class="section-header reveal" data-aos="fade-up"><div class="eyebrow">Join Form</div><h2>Join Form</h2></div>
+        
+        <!-- Floating Active Members Card -->
+        <div class="reveal" data-aos="fade-up" style="display: flex; justify-content: center; margin-bottom: 24px;">
+          <div class="active-members-card" aria-live="polite">
+            <span class="active-members-dot" aria-hidden="true"></span>
+            <div class="active-members-copy">
+              <span class="active-members-count" data-active-members-count>100</span>
+              <span class="active-members-label">Active members</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volunteer Intro Animated Box -->
+        <div class="reveal" data-aos="fade-up" style="margin-bottom: 34px;">
+          <div class="volunteer-intro-card">
+            <div class="icon-badge"><i data-lucide="handshake"></i></div>
+            <h3>Join as a Volunteer</h3>
+            <p>Become a community leader! Contribute your skills, time, and energy to organize local projects, document business challenges, and drive positive neighborhood change with NUNP.</p>
+          </div>
+        </div>
+
         <div class="surface reveal" data-aos="fade-up">
           <form data-mailto="nunp.chennai@gmail.com" data-mailto-subject="NUNP Join Request" data-form-key="join" class="form-grid">
             <div class="form-grid cols-2">
@@ -53,7 +207,7 @@
               <div class="field"><label for="join-phone">Phone</label><input id="join-phone" name="Phone" type="tel" required></div>
               <div class="field"><label for="join-city">City / Area</label><input id="join-city" name="City / Area" type="text" required></div>
             </div>
-            <div class="field"><label for="join-role">Role</label><select id="join-role" name="Role" data-role-select><option>Volunteer</option><option>Youth Fellow</option><option>Campus Ambassador</option><option>Community Coordinator</option><option>Partner Organization</option><option>Corporate Partner</option><option>Supporter</option></select></div>
+            <div class="field"><label for="join-role">Role</label><input id="join-role" name="Role" type="text" value="Volunteer" data-role-select readonly style="background: var(--soft-bg); cursor: not-allowed;"></div>
             <div class="field"><label for="join-message">Message</label><textarea id="join-message" name="Message"></textarea></div>
             <button class="btn btn-primary" type="submit">Submit</button>
           </form>
