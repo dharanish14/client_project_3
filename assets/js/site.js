@@ -582,11 +582,32 @@
     document.querySelectorAll('form[data-mailto]').forEach((form) => {
       form.addEventListener('submit', (event) => {
         event.preventDefault();
+
+        const submitBtn = form.querySelector('[type="submit"]') || form.querySelector('button');
+        if (submitBtn && submitBtn.disabled) {
+          return;
+        }
+
         const formKey = form.dataset.formKey || '';
         const endpoint = form.dataset.formEndpoint || formEndpoints[formKey] || '';
         const isJoinForm = formKey === 'join';
         const isVolunteerForm = formKey === 'volunteer';
-        
+
+        let originalBtnHtml = '';
+        if (submitBtn) {
+          originalBtnHtml = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          const loadingText = isVolunteerForm ? 'Registering...' : 'Submitting...';
+          submitBtn.innerHTML = `<span class="btn-spinner"></span>${loadingText}`;
+        }
+
+        const resetSubmitBtn = () => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+          }
+        };
+
         let newMemberId = defaultActiveMembers;
         if (isJoinForm || isVolunteerForm) {
           newMemberId = incrementActiveMembersCount();
@@ -649,6 +670,7 @@
             showIDCardModal(volunteerName, newMemberId, currentPhoto);
             volunteerPhotoBase64 = '';
             volunteerPhotoType = '';
+            resetSubmitBtn();
             return;
           }
           
@@ -664,6 +686,7 @@
               showIDCardModal(volunteerName, newMemberId, currentPhoto);
               volunteerPhotoBase64 = '';
               volunteerPhotoType = '';
+              resetSubmitBtn();
             })
             .catch(() => {
               showCustomSuccessModal(
@@ -671,6 +694,7 @@
                 'The submission endpoint is temporarily unavailable. Please try again or email us directly at nunp.chennai@gmail.com.',
                 false
               );
+              resetSubmitBtn();
             });
           return;
         }
@@ -689,6 +713,7 @@
         showIDCardModal(volunteerName, newMemberId, currentPhoto);
         volunteerPhotoBase64 = '';
         volunteerPhotoType = '';
+        resetSubmitBtn();
         window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
       });
     });
