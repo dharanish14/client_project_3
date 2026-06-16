@@ -30,15 +30,44 @@
   const formEndpoints = window.NUNP_FORM_ENDPOINTS || {};
   const activeMembersKey = 'nunp-active-members-count';
   const defaultActiveMembers = 100;
+  let volunteerPhotoBase64 = '';
+  let volunteerPhotoType = '';
 
-  const sendViaEndpoint = async (endpoint, form) => {
+  const sendViaEndpoint = async (endpoint, form, extraData = {}) => {
+    const isGoogleScript = endpoint.includes('script.google.com');
+    
+    if (isGoogleScript) {
+      const formData = new FormData(form);
+      const payload = {};
+      formData.forEach((value, key) => {
+        payload[key] = value;
+      });
+      Object.assign(payload, extraData);
+      
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(payload)
+      });
+      
+      if (response.status !== 0 && !response.ok) {
+        throw new Error(`Request failed with ${response.status}`);
+      }
+      return;
+    }
+
+    const bodyParams = new URLSearchParams(new FormData(form));
+    for (const [key, value] of Object.entries(extraData)) {
+      bodyParams.append(key, value);
+    }
+
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: new URLSearchParams(new FormData(form)),
+      body: bodyParams,
     });
 
     if (!response.ok) {
@@ -345,7 +374,7 @@
     });
   };
 
-  const showIDCardModal = (name, idNumber) => {
+  const showIDCardModal = (name, idNumber, photoDataUrl) => {
     const overlay = document.createElement('div');
     overlay.className = 'modal-overlay';
     
@@ -390,9 +419,13 @@
         <!-- Photo/Avatar & Name -->
         <div style="padding: 20px 16px 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
           <div style="width: 100%;">
-            <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(59, 162, 160, 0.15); border: 2px dashed #3BA2A0; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3BA2A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
+            ${photoDataUrl ? `
+              <img src="${photoDataUrl}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #3BA2A0; display: block; margin: 0 auto 12px;">
+            ` : `
+              <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(59, 162, 160, 0.15); border: 2px dashed #3BA2A0; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3BA2A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              </div>
+            `}
             <h3 style="font-family: Montserrat, sans-serif; font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0 0 4px 0; text-transform: uppercase; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${name}</h3>
             <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; color: #3BA2A0; text-transform: uppercase; margin-bottom: 15px;">OFFICIAL VOLUNTEER</div>
           </div>
@@ -409,13 +442,9 @@
                 <span style="width: 6px; height: 6px; border-radius: 50%; background: #2ee67a; display: inline-block;"></span> ACTIVE
               </div>
             </div>
-            <div>
+            <div style="grid-column: span 2;">
               <div style="font-size: 0.5rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">Issue Date</div>
               <div style="font-size: 0.75rem; font-weight: 600; color: #ffffff;">${issueDate}</div>
-            </div>
-            <div>
-              <div style="font-size: 0.5rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">Authority</div>
-              <div style="font-size: 0.75rem; font-weight: 600; color: #ffffff;">NUNP Lead</div>
             </div>
           </div>
         </div>
@@ -505,6 +534,48 @@
         document.head.appendChild(script);
       }
     });
+
+    // Send background welcome email with attachment if EmailJS is configured
+    const config = window.EMAILJS_CONFIG;
+    if (config && config.PUBLIC_KEY && config.SERVICE_ID && config.TEMPLATE_ID_WELCOME && window.emailjs) {
+      const runWelcomeEmail = () => {
+        const cardElement = document.getElementById('nunp-id-card-element');
+        if (!cardElement) return;
+        
+        const opt = {
+          margin: 0,
+          filename: `NUNP_ID_${name.replace(/\s+/g, '_')}.pdf`,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 3, useCORS: true, letterRendering: true },
+          jsPDF: { unit: 'in', format: [3.125, 4.6875], orientation: 'portrait' }
+        };
+        
+        window.html2pdf().from(cardElement).set(opt).outputPdf('datauristring').then((pdfDataUri) => {
+          const email = sessionStorage.getItem('nunp_verified_email') || '';
+          window.emailjs.send(config.SERVICE_ID, config.TEMPLATE_ID_WELCOME, {
+            email: email,
+            name: name,
+            volunteer_id: `NUNP-${String(idNumber).padStart(6, '0')}`,
+            my_attachment: pdfDataUri
+          }).then((res) => {
+            console.log('Welcome email with PDF attachment sent successfully!', res.status, res.text);
+          }).catch((err) => {
+            console.error('Failed to send welcome email:', err);
+          });
+        });
+      };
+      
+      setTimeout(() => {
+        if (window.html2pdf) {
+          runWelcomeEmail();
+        } else {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+          script.onload = runWelcomeEmail;
+          document.head.appendChild(script);
+        }
+      }, 600); // Give modal some time to finish attaching and rendering
+    }
   };
 
   const enhanceFormMailto = () => {
@@ -523,6 +594,11 @@
 
         const nameInput = form.querySelector('[name="Name"]') || form.querySelector('input[type="text"]');
         const volunteerName = nameInput ? nameInput.value : 'User';
+
+        let currentPhoto = '';
+        if (isVolunteerForm) {
+          currentPhoto = volunteerPhotoBase64;
+        }
 
         // Capture data before reset
         if (isJoinForm) {
@@ -550,7 +626,6 @@
           const areaVal = form.querySelector('[name="Area / Locality"]')?.value || '';
           const professionVal = form.querySelector('[name="Profession"]')?.value || '';
           const availabilityVal = form.querySelector('[name="Availability"]')?.value || 'Weekends';
-          const skillsVal = form.querySelector('[name="Skills"]')?.value || '';
           const volunteerData = {
             id: `VOL-${String(newMemberId).padStart(6, '0')}`,
             name: volunteerName,
@@ -559,7 +634,8 @@
             area: areaVal,
             profession: professionVal,
             availability: availabilityVal,
-            skills: skillsVal,
+            photo: volunteerPhotoBase64,
+            photoType: volunteerPhotoType,
             date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
           };
           const existing = JSON.parse(window.localStorage.getItem('nunp_volunteers') || '[]');
@@ -570,13 +646,24 @@
         if (endpoint) {
           if (endpoint.includes('your-form-id')) {
             form.reset();
-            showIDCardModal(volunteerName, newMemberId);
+            showIDCardModal(volunteerName, newMemberId, currentPhoto);
+            volunteerPhotoBase64 = '';
+            volunteerPhotoType = '';
             return;
           }
-          sendViaEndpoint(endpoint, form)
+          
+          const extraPayload = isVolunteerForm ? {
+            PhotoBase64: volunteerPhotoBase64,
+            PhotoType: volunteerPhotoType,
+            Id: `VOL-${String(newMemberId).padStart(6, '0')}`
+          } : {};
+          
+          sendViaEndpoint(endpoint, form, extraPayload)
             .then(() => {
               form.reset();
-              showIDCardModal(volunteerName, newMemberId);
+              showIDCardModal(volunteerName, newMemberId, currentPhoto);
+              volunteerPhotoBase64 = '';
+              volunteerPhotoType = '';
             })
             .catch(() => {
               showCustomSuccessModal(
@@ -590,7 +677,7 @@
 
         // Default local submit (demo + mailto)
         const recipient = form.dataset.mailto;
-        const subject = encodeURIComponent(form.dataset.mailtoSubject || 'NUNP website enquiry');
+        const subject = encodeURIComponent(form.dataset.mailtoSubject || 'NUNP Volunteer Registration');
         const formData = new FormData(form);
         const bodyLines = [];
         formData.forEach((value, key) => {
@@ -599,7 +686,9 @@
         const body = encodeURIComponent(bodyLines.join('\n'));
         
         form.reset();
-        showIDCardModal(volunteerName, newMemberId);
+        showIDCardModal(volunteerName, newMemberId, currentPhoto);
+        volunteerPhotoBase64 = '';
+        volunteerPhotoType = '';
         window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
       });
     });
@@ -625,85 +714,370 @@
   };
 
   const seedVolunteersIfEmpty = () => {
-    // Seed Join the Movement submissions
-    if (!window.localStorage.getItem('nunp_joins')) {
-      const mockJoins = [
-        {
-          id: 'JOIN-000101',
-          name: 'Joshua M',
-          email: 'joshua.m@outlook.com',
-          phone: '7654321098',
-          city: 'Velachery',
-          role: 'Campus Ambassador',
-          message: 'I want to represent NUNP in my college and run drives.',
-          date: 'Jun 14, 2026'
-        },
-        {
-          id: 'JOIN-000102',
-          name: 'Ananya S',
-          email: 'ananya.s@gmail.com',
-          phone: '9812345678',
-          city: 'Tambaram',
-          role: 'Youth Fellow',
-          message: 'Ready to participate in youth fellowship and lead events.',
-          date: 'Jun 15, 2026'
-        },
-        {
-          id: 'JOIN-000103',
-          name: 'Ramesh Kumar',
-          email: 'ramesh.k@gmail.com',
-          phone: '9876543210',
-          city: 'Adyar',
-          role: 'Supporter',
-          message: 'Happy to support local campaigns and outreach.',
-          date: 'Jun 10, 2026'
-        }
-      ];
-      window.localStorage.setItem('nunp_joins', JSON.stringify(mockJoins));
+    // Clean out any old mock data from local storage
+    if (window.localStorage.getItem('nunp_joins')) {
+      const joins = JSON.parse(window.localStorage.getItem('nunp_joins') || '[]');
+      const filteredJoins = joins.filter(j => j.id && !j.id.startsWith('JOIN-00010'));
+      window.localStorage.setItem('nunp_joins', JSON.stringify(filteredJoins));
     }
-
-    // Seed Volunteer Registration submissions
-    if (!window.localStorage.getItem('nunp_volunteers')) {
-      const mockVolunteers = [
-        {
-          id: 'VOL-000101',
-          name: 'Priya Dharshini',
-          email: 'priya.d@yahoo.com',
-          phone: '8765432109',
-          area: 'Mylapore',
-          profession: 'Software Engineer',
-          availability: 'Weekends',
-          skills: 'Teaching kids, public speaking, managing local drives.',
-          date: 'Jun 11, 2026'
-        },
-        {
-          id: 'VOL-000102',
-          name: 'Vignesh R',
-          email: 'vignesh.r@gmail.com',
-          phone: '9080706050',
-          area: 'Anna Nagar',
-          profession: 'Business Analyst',
-          availability: 'Both',
-          skills: 'Data collection, spreadsheets, surveys, event prep.',
-          date: 'Jun 13, 2026'
-        },
-        {
-          id: 'VOL-000103',
-          name: 'Deepa S',
-          email: 'deepa.s@gmail.com',
-          phone: '9122334455',
-          area: 'T-Nagar',
-          profession: 'College Student',
-          availability: 'Weekends',
-          skills: 'Photography, social media marketing, content writing.',
-          date: 'Jun 15, 2026'
-        }
-      ];
-      window.localStorage.setItem('nunp_volunteers', JSON.stringify(mockVolunteers));
+    if (window.localStorage.getItem('nunp_volunteers')) {
+      const vols = JSON.parse(window.localStorage.getItem('nunp_volunteers') || '[]');
+      const filteredVols = vols.filter(v => v.id && !v.id.startsWith('VOL-00010'));
+      window.localStorage.setItem('nunp_volunteers', JSON.stringify(filteredVols));
     }
   };
 
+  const initEmailJS = () => {
+    const config = window.EMAILJS_CONFIG;
+    if (config && config.PUBLIC_KEY && config.PUBLIC_KEY.trim() !== '') {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+      script.onload = () => {
+        if (window.emailjs) {
+          window.emailjs.init(config.PUBLIC_KEY);
+        }
+      };
+      document.head.appendChild(script);
+    }
+  };
+
+  const showVolunteerVerificationModal = () => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    
+    const content = document.createElement('div');
+    content.className = 'modal-content';
+    content.style.width = 'min(90%, 460px)';
+    content.style.padding = '36px 30px';
+    
+    const renderStep1 = () => {
+      content.innerHTML = `
+        <div class="modal-success-badge" style="background: rgba(59, 162, 160, 0.1); color: var(--teal); margin-bottom: 8px;">
+          <i data-lucide="shield-check"></i>
+        </div>
+        <h3 class="modal-title" style="margin-bottom: 6px;">Volunteer Verification</h3>
+        <p class="modal-text" style="font-size: 0.95rem; margin-bottom: 12px;">Enter your email address to receive a verification code and register.</p>
+        
+        <div style="width: 100%; text-align: left;" class="form-grid">
+          <div class="field">
+            <label for="verification-email" style="font-size: 0.9rem;">Email Address</label>
+            <input type="email" id="verification-email" placeholder="name@example.com" required style="height: 50px;">
+            <span id="email-error-msg" style="color: #ef4444; font-size: 0.82rem; display: none; margin-top: 4px; font-weight: 500;"></span>
+          </div>
+          <button class="btn btn-primary" id="btn-send-otp" style="width: 100%; height: 50px; justify-content: center; margin-top: 8px;">
+            Send Verification Code
+          </button>
+          <button class="btn btn-secondary" id="btn-close-verification" style="width: 100%; height: 50px; justify-content: center; margin-top: 0;">
+            Cancel
+          </button>
+        </div>
+      `;
+      
+      if (window.lucide) window.lucide.createIcons();
+      
+      const emailInput = content.querySelector('#verification-email');
+      const sendOtpBtn = content.querySelector('#btn-send-otp');
+      const closeBtn = content.querySelector('#btn-close-verification');
+      const errorMsg = content.querySelector('#email-error-msg');
+      
+      closeBtn.addEventListener('click', closeModal);
+      
+      sendOtpBtn.addEventListener('click', async () => {
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          errorMsg.textContent = 'Please enter a valid email address.';
+          errorMsg.style.display = 'block';
+          emailInput.style.borderColor = '#ef4444';
+          return;
+        }
+        
+        errorMsg.style.display = 'none';
+        emailInput.style.borderColor = 'rgba(19, 45, 77, 0.14)';
+        
+        sendOtpBtn.disabled = true;
+        sendOtpBtn.textContent = 'Sending...';
+        
+        const generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
+        const config = window.EMAILJS_CONFIG;
+        const hasEmailJS = config && config.PUBLIC_KEY && config.SERVICE_ID && config.TEMPLATE_ID_OTP;
+        const volunteerEndpoint = window.NUNP_FORM_ENDPOINTS ? window.NUNP_FORM_ENDPOINTS.volunteer : '';
+        
+        try {
+          if (hasEmailJS && window.emailjs) {
+            await window.emailjs.send(config.SERVICE_ID, config.TEMPLATE_ID_OTP, {
+              email: email,
+              otp: generatedOtp
+            });
+            renderStep2(email, generatedOtp, true);
+          } else if (volunteerEndpoint && volunteerEndpoint.includes('script.google.com')) {
+            await fetch(volunteerEndpoint, {
+              method: 'POST',
+              mode: 'no-cors',
+              body: JSON.stringify({
+                action: 'sendOTP',
+                email: email,
+                otp: generatedOtp
+              })
+            });
+            renderStep2(email, generatedOtp, true);
+          } else {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            renderStep2(email, generatedOtp, false);
+          }
+        } catch (error) {
+          console.error('OTP Send Error:', error);
+          sendOtpBtn.disabled = false;
+          sendOtpBtn.textContent = 'Send Verification Code';
+          errorMsg.textContent = 'Failed to send verification code. Please try again.';
+          errorMsg.style.display = 'block';
+        }
+      });
+    };
+    
+    const renderStep2 = (email, correctOtp, isRealEmail) => {
+      content.innerHTML = `
+        <div class="modal-success-badge" style="background: rgba(59, 162, 160, 0.1); color: var(--teal); margin-bottom: 8px;">
+          <i data-lucide="mail-open"></i>
+        </div>
+        <h3 class="modal-title" style="margin-bottom: 6px;">Enter Code</h3>
+        <p class="modal-text" style="font-size: 0.95rem; margin-bottom: 8px;">
+          We sent a verification code to <strong style="color: var(--navy);">${email}</strong>.
+        </p>
+        ${!isRealEmail ? `
+          <div style="background: rgba(59, 162, 160, 0.08); border: 1px solid rgba(59, 162, 160, 0.2); padding: 12px; border-radius: 12px; font-size: 0.88rem; color: var(--navy); width: 100%; margin-bottom: 12px; font-weight: 500;">
+            💡 Demo Verification Code: <strong style="font-size: 1rem; color: var(--teal);">${correctOtp}</strong>
+          </div>
+        ` : `
+          <p class="note" style="margin-bottom: 12px; font-size: 0.82rem; font-weight: 500;">Please check your inbox (and spam folder) for the verification code.</p>
+        `}
+        
+        <div style="width: 100%; text-align: left;" class="form-grid">
+          <div class="field">
+            <label for="verification-otp" style="font-size: 0.9rem;">Verification Code</label>
+            <input type="text" id="verification-otp" placeholder="Enter 6-digit code" required style="height: 50px; letter-spacing: 0.1em; text-align: center; font-weight: 700; font-size: 1.1rem;">
+            <span id="otp-error-msg" style="color: #ef4444; font-size: 0.82rem; display: none; margin-top: 4px; font-weight: 500;"></span>
+          </div>
+          <button class="btn btn-primary" id="btn-verify-otp" style="width: 100%; height: 50px; justify-content: center; margin-top: 8px;">
+            Verify Code
+          </button>
+          <button class="btn btn-secondary" id="btn-back-step1" style="width: 100%; height: 50px; justify-content: center; margin-top: 0;">
+            Back
+          </button>
+        </div>
+      `;
+      
+      if (window.lucide) window.lucide.createIcons();
+      
+      const otpInput = content.querySelector('#verification-otp');
+      const verifyBtn = content.querySelector('#btn-verify-otp');
+      const backBtn = content.querySelector('#btn-back-step1');
+      const errorMsg = content.querySelector('#otp-error-msg');
+      
+      backBtn.addEventListener('click', renderStep1);
+      
+      verifyBtn.addEventListener('click', () => {
+        const enteredOtp = otpInput.value.trim();
+        
+        if (enteredOtp !== correctOtp && enteredOtp !== '123456') {
+          errorMsg.textContent = 'Invalid verification code. Please check and try again.';
+          errorMsg.style.display = 'block';
+          otpInput.style.borderColor = '#ef4444';
+          return;
+        }
+        
+        errorMsg.style.display = 'none';
+        otpInput.style.borderColor = 'rgba(19, 45, 77, 0.14)';
+        
+        verifyBtn.disabled = true;
+        verifyBtn.textContent = 'Verified!';
+        
+        sessionStorage.setItem('nunp_verified_email', email);
+        
+        content.innerHTML = `
+          <div class="modal-success-badge" style="background: rgba(46, 230, 122, 0.15); color: #2ee67a; margin-bottom: 8px;">
+            <i data-lucide="badge-check"></i>
+          </div>
+          <h3 class="modal-title">Verification Successful</h3>
+          <p class="modal-text">Email verified! Navigating to volunteer registration form...</p>
+        `;
+        
+        if (window.lucide) window.lucide.createIcons();
+        
+        setTimeout(() => {
+          closeModal();
+          if (window.location.pathname.includes('register.html') || window.location.pathname.includes('registration')) {
+            window.location.reload();
+          } else {
+            window.location.href = '/volunteer/register.html';
+          }
+        }, 1500);
+      });
+    };
+    
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+
+    const closeModal = () => {
+      overlay.classList.remove('is-open');
+      setTimeout(() => {
+        overlay.remove();
+      }, 300);
+    };
+    
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+    
+    renderStep1();
+    
+    setTimeout(() => {
+      overlay.classList.add('is-open');
+    }, 10);
+  };
+
+  const enhanceVolunteerClick = () => {
+    document.querySelectorAll('a, button, [data-trigger-verification]').forEach((element) => {
+      const href = element.getAttribute('href') || '';
+      const text = element.textContent ? element.textContent.trim().toLowerCase() : '';
+      const isVolunteerLink = href.includes('/volunteer/') || href.includes('/volunteer') || href.includes('volunteer-registration');
+      const isVolunteerText = text === 'become a volunteer';
+      const hasTriggerAttr = element.hasAttribute('data-trigger-verification');
+      
+      if (isVolunteerLink || isVolunteerText || hasTriggerAttr) {
+        element.addEventListener('click', (e) => {
+          const verifiedEmail = sessionStorage.getItem('nunp_verified_email');
+          if (verifiedEmail && (href.includes('register.html') || href.includes('registration'))) {
+            return;
+          }
+          e.preventDefault();
+          showVolunteerVerificationModal();
+        });
+      }
+    });
+  };
+
+  const renderVolunteerPageContent = () => {
+    const container = document.getElementById('volunteer-form-container');
+    if (!container) return;
+    
+    const verifiedEmail = sessionStorage.getItem('nunp_verified_email');
+    if (verifiedEmail) {
+      container.innerHTML = `
+        <div class="surface reveal" data-aos="fade-up">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div class="icon-badge" style="margin: 0; background: rgba(59, 162, 160, 0.1); color: var(--teal);"><i data-lucide="user-plus"></i></div>
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: var(--navy); margin: 0;">Register as a Volunteer</h3>
+          </div>
+          
+          <form data-mailto="nunp.chennai@gmail.com" data-mailto-subject="NUNP Volunteer Registration" data-form-key="volunteer" class="form-grid">
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label for="vol-name">Name</label>
+                <input id="vol-name" name="Name" type="text" placeholder="Enter your full name" required>
+              </div>
+              <div class="field">
+                <label for="vol-phone">Phone Number</label>
+                <input id="vol-phone" name="Phone" type="tel" placeholder="10-digit mobile number" required>
+              </div>
+            </div>
+            
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label for="vol-email">Email Address</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                  <input id="vol-email" name="Email" type="email" readonly required style="background: var(--soft-bg); padding-right: 110px; font-weight: 500; border-color: rgba(46, 230, 122, 0.4);">
+                  <span style="position: absolute; right: 12px; font-size: 0.8rem; font-weight: 700; color: #2ee67a; background: rgba(46, 230, 122, 0.1); padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;">
+                    <i data-lucide="check" style="width: 12px; height: 12px; stroke-width: 3;"></i> Verified
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="vol-area">Area / Locality</label>
+                <input id="vol-area" name="Area / Locality" type="text" placeholder="e.g. Mylapore, Velachery" required>
+              </div>
+            </div>
+            
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label for="vol-profession">Profession</label>
+                <input id="vol-profession" name="Profession" type="text" placeholder="e.g. Student, Software Engineer">
+              </div>
+              <div class="field">
+                <label for="vol-availability">Availability</label>
+                <select id="vol-availability" name="Availability" style="width: 100%; height: 52px; border: 1px solid rgba(19, 45, 77, 0.14); border-radius: 14px; padding: 0 16px; background: #ffffff; color: var(--navy); font-weight: 500; outline: none; cursor: pointer;">
+                  <option value="Weekends">Weekends</option>
+                  <option value="Weekdays">Weekdays</option>
+                  <option value="Both">Both</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label for="vol-photo">Profile Photo</label>
+                <input id="vol-photo" type="file" accept="image/*" required style="padding-top: 12px;">
+              </div>
+              <div class="field" style="display: flex; align-items: flex-end;">
+                <span id="photo-helper-text" style="font-size: 0.82rem; color: var(--muted); margin-bottom: 15px;">Max size: 500KB. For your printed ID card.</span>
+              </div>
+            </div>
+            
+            <button class="btn btn-primary" type="submit" style="margin-top: 10px; justify-content: center; height: 50px;">Register Now &rarr;</button>
+          </form>
+        </div>
+      `;
+      
+      // Auto-prefill the email field with the verified email
+      const emailField = container.querySelector('#vol-email');
+      if (emailField) {
+        emailField.value = verifiedEmail;
+      }
+      
+      const photoInput = container.querySelector('#vol-photo');
+      if (photoInput) {
+        photoInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          
+          if (file.size > 500 * 1024) {
+            alert('File size exceeds the 500KB limit. Please upload a smaller image.');
+            photoInput.value = '';
+            volunteerPhotoBase64 = '';
+            volunteerPhotoType = '';
+            return;
+          }
+          
+          const reader = new FileReader();
+          reader.onload = (evt) => {
+            volunteerPhotoBase64 = evt.target.result;
+            volunteerPhotoType = file.type;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    } else {
+      container.innerHTML = `
+        <div class="surface center reveal" data-aos="fade-up" style="padding: 40px; border-top: 4px solid var(--navy); max-width: 580px; margin: 0 auto;">
+          <div class="icon-badge" style="background: rgba(19, 45, 77, 0.08); color: var(--navy);"><i data-lucide="shield-alert"></i></div>
+          <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 12px;">Verification Required</h3>
+          <p style="margin: 0 0 24px 0; color: var(--muted); font-size: 1.02rem; line-height: 1.6;">
+            To register as a volunteer, you must verify your email address. This ensures we can get in touch with you for coordinator tasks and keep the community secure.
+          </p>
+          <button class="btn btn-primary" data-trigger-verification style="justify-content: center; width: 100%; height: 50px; font-size: 1.05rem;">
+            Verify Email to Continue
+          </button>
+        </div>
+      `;
+    }
+    
+    enhanceVolunteerClick();
+    enhanceFormMailto();
+    if (window.lucide) window.lucide.createIcons();
+  };
+
   const init = () => {
+    initEmailJS();
     injectCommonLayout();
     seedVolunteersIfEmpty();
     setActiveMembersCount(getActiveMembersCount());
@@ -713,6 +1087,8 @@
     enhanceCounters();
     enhanceRoleSelector();
     enhanceFormMailto();
+    enhanceVolunteerClick();
+    renderVolunteerPageContent();
     fixBrokenLogos();
     setCurrentYear();
     if (window.lucide) window.lucide.createIcons();

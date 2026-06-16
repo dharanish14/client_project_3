@@ -633,10 +633,10 @@
 
         <!-- Tabs Switcher -->
         <div class="tab-bar">
-          <button class="tab-btn active" id="tab-joins" data-tab="joins">
+          <button class="tab-btn" id="tab-joins" data-tab="joins">
             <i data-lucide="compass" style="width: 18px; height: 18px;"></i> Join the Movement
           </button>
-          <button class="tab-btn" id="tab-volunteers" data-tab="volunteers">
+          <button class="tab-btn active" id="tab-volunteers" data-tab="volunteers">
             <i data-lucide="user-plus" style="width: 18px; height: 18px;"></i> Become a Volunteer
           </button>
         </div>
@@ -710,6 +710,7 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="/assets/js/config.js"></script>
   
   <script>
     // DOM Elements
@@ -745,7 +746,25 @@
 
     let joinsDataset = [];
     let volunteersDataset = [];
-    let activeTab = 'joins'; // 'joins' or 'volunteers'
+    let activeTab = 'volunteers'; // 'joins' or 'volunteers'
+
+    // Helper to convert Google Drive viewer link into a direct download/render link
+    function getDirectImageUrl(url) {
+      if (!url) return '';
+      if (!url.includes('drive.google.com')) return url;
+      
+      let fileId = '';
+      const fileDMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (fileDMatch && fileDMatch[1]) {
+        fileId = fileDMatch[1];
+      } else {
+        const idParamMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        if (idParamMatch && idParamMatch[1]) {
+          fileId = idParamMatch[1];
+        }
+      }
+      return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : url;
+    }
 
     // Check auth status
     function checkAuth() {
@@ -769,10 +788,52 @@
       if (window.lucide) window.lucide.createIcons();
     }
 
-    // Load data from localStorage
-    function loadData() {
+    // Load data from localStorage and fetch live data from Google Sheets
+    async function loadData() {
+      // Load local joins data
       joinsDataset = JSON.parse(localStorage.getItem('nunp_joins') || '[]');
+      joinsDataset = joinsDataset.filter(j => j.id && !j.id.startsWith('JOIN-00010'));
+      
+      // Default local volunteers data
       volunteersDataset = JSON.parse(localStorage.getItem('nunp_volunteers') || '[]');
+      volunteersDataset = volunteersDataset.filter(v => v.id && !v.id.startsWith('VOL-00010'));
+      
+      const endpoint = window.NUNP_FORM_ENDPOINTS ? window.NUNP_FORM_ENDPOINTS.volunteer : '';
+      if (endpoint && endpoint.includes('script.google.com')) {
+        try {
+          const response = await fetch(endpoint);
+          if (response.ok) {
+            const liveVolunteers = await response.json();
+            
+            if (Array.isArray(liveVolunteers)) {
+              // Map columns: Timestamp, Volunteer ID, Name, Phone, Email, Area / Locality, Profession, Availability, Photo Link
+              volunteersDataset = liveVolunteers.map((row, idx) => {
+                let formattedDate = '';
+                if (row.Timestamp) {
+                  const dateObj = new Date(row.Timestamp);
+                  if (!isNaN(dateObj)) {
+                    formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                  }
+                }
+                
+                return {
+                  id: row["Volunteer ID"] || `VOL-live-${idx}`,
+                  name: row["Name"] || 'Unknown',
+                  phone: row["Phone"] || '',
+                  email: row["Email"] || '',
+                  area: row["Area / Locality"] || '',
+                  profession: row["Profession"] || '',
+                  availability: row["Availability"] || 'Weekends',
+                  photo: row["Photo Link"] && row["Photo Link"] !== 'No Photo' ? row["Photo Link"] : '',
+                  date: formattedDate || 'N/A'
+                };
+              });
+            }
+          }
+        } catch (error) {
+          console.error('Error loading live data from Google Sheet:', error);
+        }
+      }
       
       updateStatsCounters();
       populateFilters();
@@ -878,13 +939,13 @@
       } else {
         tableHead.innerHTML = `
           <tr>
+            <th>Photo</th>
             <th>ID</th>
             <th>Name</th>
             <th>Contact Info</th>
             <th>Area / Locality</th>
             <th>Profession</th>
             <th>Availability</th>
-            <th>Skills</th>
             <th>Reg Date</th>
             <th style="text-align: right;">Actions</th>
           </tr>
@@ -941,6 +1002,15 @@
             `;
           } else {
             tr.innerHTML = `
+              <td>
+                ${row.photo ? `
+                  <img src="${getDirectImageUrl(row.photo)}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(19,45,77,0.15);">
+                ` : `
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(19,45,77,0.06); display: flex; align-items: center; justify-content: center; color: var(--muted);">
+                    <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+                  </div>
+                `}
+              </td>
               <td><span class="volunteer-id-badge" style="background: rgba(26,63,107,0.08); color: var(--navy);">${row.id || ''}</span></td>
               <td style="font-weight: 600; cursor: pointer;" class="trigger-modal-name">${row.name || ''}</td>
               <td>
@@ -952,9 +1022,6 @@
               <td>${row.area || ''}</td>
               <td>${row.profession || 'N/A'}</td>
               <td><span class="volunteer-role-badge">${row.availability || 'Weekends'}</span></td>
-              <td>
-                <div class="volunteer-message-text" title="Click to view skills">${row.skills || 'No skills listed'}</div>
-              </td>
               <td>${row.date || ''}</td>
               <td style="text-align: right;">
                 <button class="btn btn-secondary btn-action btn-delete" style="padding: 6px 12px; margin-left: 6px;">
@@ -966,7 +1033,11 @@
 
           // Trigger modals on text click or name click
           tr.querySelector('.trigger-modal-name').addEventListener('click', () => openModal(row));
-          tr.querySelector('.volunteer-message-text').addEventListener('click', () => openModal(row));
+          
+          const msgText = tr.querySelector('.volunteer-message-text');
+          if (msgText) {
+            msgText.addEventListener('click', () => openModal(row));
+          }
           
           // Delete row click
           tr.querySelector('.btn-delete').addEventListener('click', (e) => {
@@ -1043,6 +1114,15 @@
         document.getElementById('m-title').textContent = "Volunteer Registration Details";
         modalBody.innerHTML = `
           <div class="detail-grid">
+            <div class="detail-item full-width" style="display: flex; justify-content: center; margin-bottom: 15px;">
+              ${row.photo ? `
+                <img src="${getDirectImageUrl(row.photo)}" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--navy); box-shadow: var(--shadow-strong);">
+              ` : `
+                <div style="width: 120px; height: 120px; border-radius: 50%; background: rgba(19, 45, 77, 0.08); border: 2px dashed var(--navy); display: flex; align-items: center; justify-content: center; color: var(--navy);">
+                  <i data-lucide="user" style="width: 48px; height: 48px;"></i>
+                </div>
+              `}
+            </div>
             <div class="detail-item">
               <span class="detail-label">Volunteer ID</span>
               <span class="detail-value" style="color: var(--navy); font-weight: 700;">${row.id || ''}</span>
@@ -1074,10 +1154,6 @@
             <div class="detail-item">
               <span class="detail-label">Availability</span>
               <span class="detail-value">${row.availability || 'Weekends'}</span>
-            </div>
-            <div class="detail-item full-width">
-              <span class="detail-label">Skills &amp; Experience Details</span>
-              <div class="detail-message-box">${row.skills || 'No skills/experience detailed.'}</div>
             </div>
           </div>
         `;
