@@ -54,7 +54,7 @@
           </div>
           <div class="surface">
             <h3>Register as a Volunteer</h3>
-            <form data-mailto="nunp.chennai@gmail.com" data-mailto-subject="NUNP Volunteer Registration" data-form-key="join" class="form-grid" style="margin-top: 18px;">
+            <form data-mailto="nunp.chennai@gmail.com" data-mailto-subject="NUNP Volunteer Registration" data-form-key="volunteer" class="form-grid" style="margin-top: 18px;">
               <div class="form-grid cols-2">
                 <div class="field"><label for="vol-name">Name</label><input id="vol-name" name="Name" type="text" required></div>
                 <div class="field"><label for="vol-phone">Phone</label><input id="vol-phone" name="Phone" type="tel" required></div>
@@ -74,51 +74,95 @@
           </div>
         </div>
       </div>
-        <div class="grid cols-2" style="margin-top:20px;">
-          <div>
-            <h3>Why Volunteer?</h3>
-            <p>Volunteering is not just about giving time. It is about learning, connecting, growing, and creating lasting change.</p>
-            <ul>
-              <li>Build Leadership Skills</li>
-              <li>Expand Your Network</li>
-              <li>Serve Your Community</li>
-              <li>Gain Practical Experience</li>
-              <li>Receive Recognition</li>
+    <section class="section section-alt" style="padding-top: 0;">
+      <div class="container">
+        <div class="grid cols-2" style="gap: 34px;">
+          <!-- Why Volunteer? -->
+          <div class="surface reveal" data-aos="fade-up" style="padding: 34px;">
+            <div class="eyebrow">Benefits</div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 16px; font-family: 'Montserrat', sans-serif;">Why Volunteer with NUNP?</h3>
+            <p style="margin-bottom: 24px;">Volunteering is not just about giving time. It is about learning, connecting, growing, and creating lasting change in the neighbourhood.</p>
+            <ul class="checklist">
+              <li><span class="bullet"><i data-lucide="shield-check"></i></span> Build Leadership Skills</li>
+              <li><span class="bullet"><i data-lucide="users-2"></i></span> Expand Your Network</li>
+              <li><span class="bullet"><i data-lucide="heart"></i></span> Serve Your Community</li>
+              <li><span class="bullet"><i data-lucide="briefcase"></i></span> Gain Practical Experience</li>
+              <li><span class="bullet"><i data-lucide="award"></i></span> Receive Official Recognition &amp; ID Card</li>
             </ul>
           </div>
-          <div>
-            <h3>Volunteer Opportunities</h3>
-            <ul>
-              <li>Community Outreach</li>
-              <li>Survey & Documentation</li>
-              <li>Event Management</li>
-              <li>Photography & Videography</li>
-              <li>Content Creation</li>
-              <li>Social Media</li>
-              <li>Student Mentorship</li>
-              <li>Public Awareness Campaigns</li>
-              <li>Data Collection</li>
-              <li>Project Coordination</li>
-            </ul>
+          
+          <!-- Volunteer Opportunities -->
+          <div class="surface reveal" data-aos="fade-up" data-aos-delay="100" style="padding: 34px;">
+            <div class="eyebrow">Opportunities</div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 16px; font-family: 'Montserrat', sans-serif;">Ways to Contribute</h3>
+            <p style="margin-bottom: 24px;">We have diverse roles matching your expertise. Explore our volunteer areas:</p>
+            <div class="tag-row" style="gap: 10px;">
+              <span class="tag"><i data-lucide="map-pin" style="width: 14px; height: 14px; color: var(--teal);"></i> Community Outreach</span>
+              <span class="tag"><i data-lucide="file-text" style="width: 14px; height: 14px; color: var(--teal);"></i> Survey &amp; Documentation</span>
+              <span class="tag"><i data-lucide="calendar" style="width: 14px; height: 14px; color: var(--teal);"></i> Event Management</span>
+              <span class="tag"><i data-lucide="camera" style="width: 14px; height: 14px; color: var(--teal);"></i> Photography</span>
+              <span class="tag"><i data-lucide="pen-tool" style="width: 14px; height: 14px; color: var(--teal);"></i> Content Creation</span>
+              <span class="tag"><i data-lucide="instagram" style="width: 14px; height: 14px; color: var(--teal);"></i> Social Media Marketing</span>
+              <span class="tag"><i data-lucide="user-check" style="width: 14px; height: 14px; color: var(--teal);"></i> Student Mentorship</span>
+              <span class="tag"><i data-lucide="megaphone" style="width: 14px; height: 14px; color: var(--teal);"></i> Awareness Campaigns</span>
+              <span class="tag"><i data-lucide="database" style="width: 14px; height: 14px; color: var(--teal);"></i> Data Collection</span>
+              <span class="tag"><i data-lucide="activity" style="width: 14px; height: 14px; color: var(--teal);"></i> Project Coordination</span>
+            </div>
           </div>
         </div>
 
-        <div style="margin-top:20px;">
-          <h3>Volunteer Journey</h3>
-          <ol>
-            <li>Register</li>
-            <li>Attend Orientation</li>
-            <li>Choose Your Area of Interest</li>
-            <li>Join a Project Team</li>
-            <li>Create Community Impact</li>
-            <li>Grow into a Team Leader</li>
-          </ol>
-
-          <h3 style="margin-top:18px;">Volunteer Saturdays</h3>
-          <p>Every Saturday, volunteers come together for community-focused activities including awareness campaigns, business surveys, public space improvement, student engagement, leadership activities, and community meetings.</p>
-
-          <div style="margin-top:18px;"><a class="btn btn-primary" href="/join/">Become a Volunteer</a></div>
+        <!-- Volunteer Journey Timeline -->
+        <div class="reveal" data-aos="fade-up" style="margin-top: 72px;">
+          <div class="section-header center" style="margin: 0 auto 48px;"><div class="eyebrow">The Process</div><h2 style="font-size: 2.2rem;">Your Volunteer Journey</h2></div>
+          <div class="timeline" style="grid-template-columns: repeat(6, minmax(0, 1fr));">
+            <div class="timeline-step">
+              <div class="step-circle">1</div>
+              <h4 style="font-weight: 700; margin-bottom: 4px;">Register</h4>
+              <p style="font-size: 0.82rem; margin: 0; color: var(--muted);">Fill up form</p>
+            </div>
+            <div class="timeline-step">
+              <div class="step-circle">2</div>
+              <h4 style="font-weight: 700; margin-bottom: 4px;">Orientation</h4>
+              <p style="font-size: 0.82rem; margin: 0; color: var(--muted);">Attend meet</p>
+            </div>
+            <div class="timeline-step">
+              <div class="step-circle">3</div>
+              <h4 style="font-weight: 700; margin-bottom: 4px;">Select Interests</h4>
+              <p style="font-size: 0.82rem; margin: 0; color: var(--muted);">Choose your focus</p>
+            </div>
+            <div class="timeline-step">
+              <div class="step-circle">4</div>
+              <h4 style="font-weight: 700; margin-bottom: 4px;">Join Team</h4>
+              <p style="font-size: 0.82rem; margin: 0; color: var(--muted);">Work with peers</p>
+            </div>
+            <div class="timeline-step">
+              <div class="step-circle">5</div>
+              <h4 style="font-weight: 700; margin-bottom: 4px;">Create Impact</h4>
+              <p style="font-size: 0.82rem; margin: 0; color: var(--muted);">Complete projects</p>
+            </div>
+            <div class="timeline-step">
+              <div class="step-circle">6</div>
+              <h4 style="font-weight: 700; margin-bottom: 4px;">Lead</h4>
+              <p style="font-size: 0.82rem; margin: 0; color: var(--muted);">Become coordinator</p>
+            </div>
+          </div>
         </div>
+
+        <!-- Highlight: Volunteer Saturdays -->
+        <div class="reveal" data-aos="fade-up" style="margin-top: 72px;">
+          <div class="surface" style="background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; padding: 42px; border-radius: var(--radius-lg); position: relative; overflow: hidden; border: none;">
+            <div style="position: absolute; right: -40px; top: -40px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(59,162,160,0.15) 0%, transparent 70%); pointer-events: none;"></div>
+            <div style="position: absolute; left: -20px; bottom: -50px; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, rgba(172,189,198,0.1) 0%, transparent 70%); pointer-events: none;"></div>
+            <div style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center;">
+              <div class="eyebrow" style="color: var(--teal);">Weekly Flagship Program</div>
+              <h3 style="font-family: 'Montserrat', sans-serif; font-size: 2.2rem; color: #fff; margin-bottom: 14px;">Volunteer Saturdays</h3>
+              <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px;">Every Saturday, volunteers come together for community-focused activities including awareness campaigns, business surveys, public space improvement, student engagement, leadership activities, and community meetings.</p>
+              <div><a class="btn btn-primary" href="/join/">Become a Volunteer</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
   </main>
   <div data-site-footer></div>

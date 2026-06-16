@@ -25,9 +25,16 @@
           <div class="eyebrow" style="font-size: 1.85rem; font-weight: 900; letter-spacing: 0.03em; text-transform: none; line-height: 1.25; margin-bottom: 20px; color: #ffffff;">NUNP (நம்ம ஊர் நம்ம பொறுப்பு)</div>
           <h1>Don't Just Complain. Build Your Community.</h1>
           <p class="lead">NUNP (நம்ம ஊர் நம்ம பொறுப்பு) is a citizen-led movement that transforms responsible individuals into community leaders through meaningful action, volunteerism, and leadership development.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="/join/">Join the Movement</a>
+          <div class="hero-actions" style="align-items: center;">
+            <a class="btn btn-primary" href="/join/">Join the Movement &rarr;</a>
             <a class="btn btn-secondary" href="/volunteer/">Become a Volunteer</a>
+            <div class="active-members-card" aria-live="polite" style="margin-top: 0; margin-bottom: 0; padding: 14px 22px; border-radius: 16px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start;">
+              <span class="active-members-count" data-active-members-count style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1.1;">100</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="active-members-dot" aria-hidden="true" style="width: 8px; height: 8px;"></span>
+                <span class="active-members-label" style="font-size: 0.88rem; font-weight: 600; color: #ACBDC6; text-transform: none; letter-spacing: normal;">Active Leaders</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -49,28 +56,55 @@
     </section>
 
     <section class="section">
-      <div class="container split-grid columns-2">
-        <div class="section-header reveal" data-aos="fade-up">
-          <div class="eyebrow">Who We Are</div>
-          <h2>Active Citizens. Progressive Communities.</h2>
-          <div class="stack" style="margin-top: 24px;">
-            <p>Every neighbourhood has people who care.</p>
-            <p>Every street has problems waiting to be solved.</p>
-            <p>Every student wants to create impact.</p>
-            <p>Every business deserves to be heard.</p>
+      <div class="container split-grid columns-2" style="align-items: stretch; gap: 48px;">
+        <div class="reveal" data-aos="fade-up" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="eyebrow">Who We Are</div>
+            <h2 style="margin-bottom: 24px;">Active Citizens. Progressive Communities.</h2>
+            
+            <div style="display: grid; gap: 14px; margin-bottom: 28px;">
+              <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: rgba(59, 162, 160, 0.05); border-left: 4px solid var(--teal); border-radius: 0 12px 12px 0; font-weight: 600; font-size: 1.05rem;">
+                <i data-lucide="home" style="color: var(--teal); width: 20px; height: 20px; flex-shrink: 0;"></i>
+                <span>Every neighbourhood has people who care.</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: rgba(59, 162, 160, 0.05); border-left: 4px solid var(--teal); border-radius: 0 12px 12px 0; font-weight: 600; font-size: 1.05rem;">
+                <i data-lucide="map" style="color: var(--teal); width: 20px; height: 20px; flex-shrink: 0;"></i>
+                <span>Every street has problems waiting to be solved.</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: rgba(59, 162, 160, 0.05); border-left: 4px solid var(--teal); border-radius: 0 12px 12px 0; font-weight: 600; font-size: 1.05rem;">
+                <i data-lucide="sparkles" style="color: var(--teal); width: 20px; height: 20px; flex-shrink: 0;"></i>
+                <span>Every student wants to create impact.</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: rgba(59, 162, 160, 0.05); border-left: 4px solid var(--teal); border-radius: 0 12px 12px 0; font-weight: 600; font-size: 1.05rem;">
+                <i data-lucide="store" style="color: var(--teal); width: 20px; height: 20px; flex-shrink: 0;"></i>
+                <span>Every business deserves to be heard.</span>
+              </div>
+            </div>
           </div>
-          <p>NUNP brings together citizens, students, professionals, and volunteers to identify local challenges, organize collective action, and create measurable change.</p>
-          <p>We believe that community development begins when ordinary people decide to take responsibility.</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <p style="font-size: 1.1rem; line-height: 1.6; color: var(--navy); font-weight: 500; margin: 0;">NUNP brings together citizens, students, professionals, and volunteers to identify local challenges, organize collective action, and create measurable change.</p>
+            <p style="font-size: 1rem; line-height: 1.6; color: var(--muted); margin: 0;">We believe that community development begins when ordinary people decide to take responsibility.</p>
+          </div>
         </div>
 
-        <div class="stat-strip reveal" data-aos="fade-left">
-          <div class="stat-card">
-            <h4>Our Mission</h4>
-            <p>To empower citizens to become leaders who improve their communities through service, collaboration, and responsible action.</p>
+        <div class="reveal" data-aos="fade-left" style="display: flex; flex-direction: column; gap: 24px; justify-content: center;">
+          <!-- Mission Card -->
+          <div class="surface" style="padding: 34px; border-top: 4px solid var(--teal); border-radius: var(--radius-md); box-shadow: var(--shadow-strong); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+              <div class="icon-badge" style="margin: 0; background: rgba(59, 162, 160, 0.1); color: var(--teal);"><i data-lucide="compass"></i></div>
+              <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin: 0;">Our Mission</h3>
+            </div>
+            <p style="font-size: 1.05rem; line-height: 1.6; color: var(--muted); margin: 0;">To empower citizens to become leaders who improve their communities through service, collaboration, and responsible action.</p>
           </div>
-          <div class="stat-card">
-            <h4>Our Vision</h4>
-            <p>A society where every citizen actively contributes to building stronger neighbourhoods, better institutions, and a more responsible nation.</p>
+
+          <!-- Vision Card -->
+          <div class="surface" style="padding: 34px; border-top: 4px solid var(--navy); border-radius: var(--radius-md); box-shadow: var(--shadow-strong); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+              <div class="icon-badge" style="margin: 0; background: rgba(19, 45, 77, 0.08); color: var(--navy);"><i data-lucide="eye"></i></div>
+              <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin: 0;">Our Vision</h3>
+            </div>
+            <p style="font-size: 1.05rem; line-height: 1.6; color: var(--muted); margin: 0;">A society where every citizen actively contributes to building stronger neighbourhoods, better institutions, and a more responsible nation.</p>
           </div>
         </div>
       </div>
@@ -113,7 +147,7 @@
           <div class="eyebrow">Why Join NUNP?</div>
           <h2>Why Join NUNP?</h2>
         </div>
-        <div class="grid cols-3 check-columns reveal" data-aos="fade-up">
+        <div class="grid cols-2 check-columns reveal" data-aos="fade-up">
           <div class="reason-list">
             <div class="feature-list"><span class="bullet"><i data-lucide="check"></i></span><span>Build Leadership Skills</span></div>
             <div class="feature-list"><span class="bullet"><i data-lucide="check"></i></span><span>Improve Public Speaking</span></div>
@@ -123,9 +157,6 @@
             <div class="feature-list"><span class="bullet"><i data-lucide="check"></i></span><span>Create Social Impact</span></div>
             <div class="feature-list"><span class="bullet"><i data-lucide="check"></i></span><span>Gain Practical Experience</span></div>
             <div class="feature-list"><span class="bullet"><i data-lucide="check"></i></span><span>Receive Recognition &amp; Certificates</span></div>
-          </div>
-          <div class="reason-list">
-            <div class="feature-list"><span class="bullet"><i data-lucide="check"></i></span><span>Become a Community Leader</span></div>
           </div>
         </div>
       </div>

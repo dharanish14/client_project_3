@@ -15,11 +15,12 @@
   <style>
     /* Floating Box styles */
     .active-members-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 20px;
-      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 14px 22px;
+      border-radius: 16px;
       background: #ffffff;
       border: 1px solid rgba(19, 45, 77, 0.12);
       box-shadow: 0 10px 30px rgba(19, 45, 77, 0.08), 0 2px 6px rgba(19, 45, 77, 0.04);
@@ -35,8 +36,8 @@
     }
 
     .active-members-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #2ee67a;
       flex: 0 0 auto;
@@ -50,8 +51,8 @@
       position: absolute;
       top: 0px;
       left: 0px;
-      width: 10px;
-      height: 10px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       background: #2ee67a;
       opacity: 0.8;
@@ -72,24 +73,17 @@
       }
     }
 
-    .active-members-copy {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-
     .active-members-count {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.35rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: #132D4D;
-      line-height: 1;
+      line-height: 1.1;
     }
 
     .active-members-label {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
       color: #5f7082;
       text-transform: none;
     }
@@ -177,24 +171,55 @@
       <div class="container">
         <div class="section-header reveal" data-aos="fade-up"><div class="eyebrow">Join Form</div><h2>Join Form</h2></div>
         
-        <!-- Floating Active Members Card -->
-        <div class="reveal" data-aos="fade-up" style="display: flex; justify-content: center; margin-bottom: 24px;">
-          <div class="active-members-card" aria-live="polite">
-            <span class="active-members-dot" aria-hidden="true"></span>
-            <div class="active-members-copy">
-              <span class="active-members-count" data-active-members-count>100</span>
-              <span class="active-members-label">Active members</span>
+
+        <!-- Join Roles Grid -->
+        <div class="reveal" data-aos="fade-up" style="margin-bottom: 40px;">
+          <h3 class="center" style="margin-bottom: 24px; font-family: 'Montserrat', sans-serif;">Join as</h3>
+          <div class="grid cols-3" id="roles-grid" style="gap: 16px;">
+            <div class="role-card selected" data-role-card="Volunteer" style="cursor: pointer; position: relative; border: 2px solid var(--teal); transition: all 0.3s ease;">
+              <div class="icon-badge"><i data-lucide="handshake"></i></div>
+              <h4>Volunteer</h4>
+              <p style="font-size: 0.9rem; margin: 8px 0 0 0; color: var(--muted);">Contribute your skills, time, and energy to local neighborhood projects.</p>
+            </div>
+            
+            <div class="role-card" data-role-card="Youth Fellow" style="cursor: pointer; position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+              <div class="icon-badge"><i data-lucide="graduation-cap"></i></div>
+              <h4>Youth Fellow</h4>
+              <p style="font-size: 0.9rem; margin: 8px 0 0 0; color: var(--muted);">Intensive youth leadership program to build civic projects & partnerships.</p>
+            </div>
+            
+            <div class="role-card" data-role-card="Campus Ambassador" style="cursor: pointer; position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+              <div class="icon-badge"><i data-lucide="book-open"></i></div>
+              <h4>Campus Ambassador</h4>
+              <p style="font-size: 0.9rem; margin: 8px 0 0 0; color: var(--muted);">Represent NUNP in your college or school and run campus civic drives.</p>
+            </div>
+            
+            <div class="role-card" data-role-card="Community Coordinator" style="cursor: pointer; position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+              <div class="icon-badge"><i data-lucide="map-pin"></i></div>
+              <h4>Community Coordinator</h4>
+              <p style="font-size: 0.9rem; margin: 8px 0 0 0; color: var(--muted);">Lead local neighborhood chapters and organize weekly activities.</p>
+            </div>
+            
+            <div class="role-card" data-role-card="Partner Organization" style="cursor: pointer; position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+              <div class="icon-badge"><i data-lucide="building-2"></i></div>
+              <h4>Partner Organization</h4>
+              <p style="font-size: 0.9rem; margin: 8px 0 0 0; color: var(--muted);">Collaborate as an NGO, business association, or local trust.</p>
+            </div>
+            
+            <div class="role-card" data-role-card="Corporate Partner" style="cursor: pointer; position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+              <div class="icon-badge"><i data-lucide="briefcase"></i></div>
+              <h4>Corporate Partner</h4>
+              <p style="font-size: 0.9rem; margin: 8px 0 0 0; color: var(--muted);">Sponsor programs, engage employees in CSR, and support projects.</p>
+            </div>
+            
+            <div class="role-card" data-role-card="Supporter" style="cursor: pointer; position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+              <div class="icon-badge"><i data-lucide="heart"></i></div>
+              <h4>Supporter</h4>
+              <p style="font-size: 0.9rem; margin: 8px 0 0 0; color: var(--muted);">Spread the word, fund campaigns, and support remotely.</p>
             </div>
           </div>
-        </div>
-
-        <!-- Volunteer Intro Animated Box -->
-        <div class="reveal" data-aos="fade-up" style="margin-bottom: 34px;">
-          <div class="volunteer-intro-card">
-            <div class="icon-badge"><i data-lucide="handshake"></i></div>
-            <h3>Join as a Volunteer</h3>
-            <p>Become a community leader! Contribute your skills, time, and energy to organize local projects, document business challenges, and drive positive neighborhood change with NUNP.</p>
-          </div>
+          
+          <div id="role-selection-status" data-role-output class="center" style="margin-top: 20px; font-weight: 700; color: var(--teal); font-size: 1.1rem;">You selected: Volunteer</div>
         </div>
 
         <div class="surface reveal" data-aos="fade-up">
@@ -207,7 +232,19 @@
               <div class="field"><label for="join-phone">Phone</label><input id="join-phone" name="Phone" type="tel" required></div>
               <div class="field"><label for="join-city">City / Area</label><input id="join-city" name="City / Area" type="text" required></div>
             </div>
-            <div class="field"><label for="join-role">Role</label><input id="join-role" name="Role" type="text" value="Volunteer" data-role-select readonly style="background: var(--soft-bg); cursor: not-allowed;"></div>
+            <div class="field">
+              <label for="join-role">Role</label>
+              <select id="join-role" name="Role" data-role-select style="width: 100%; border: 1px solid rgba(19, 45, 77, 0.14); border-radius: 14px; height: 52px; padding: 0 16px; background: #ffffff; color: var(--navy); font-weight: 500; outline: none; cursor: pointer; transition: border-color 0.2s;">
+                <option value="Volunteer">Volunteer</option>
+                <option value="Youth Fellow">Youth Fellow</option>
+                <option value="Campus Ambassador">Campus Ambassador</option>
+                <option value="Community Coordinator">Community Coordinator</option>
+                <option value="Partner Organization">Partner Organization</option>
+                <option value="Corporate Partner">Corporate Partner</option>
+                <option value="Supporter">Supporter</option>
+              </select>
+              <p id="role-description" style="font-size: 0.88rem; margin: 8px 0 0 4px; color: var(--muted); line-height: 1.4; font-style: italic;">Contribute your skills, time, and energy to organize local projects, document business challenges, and drive positive neighborhood change with NUNP.</p>
+            </div>
             <div class="field"><label for="join-message">Message</label><textarea id="join-message" name="Message"></textarea></div>
             <button class="btn btn-primary" type="submit">Submit</button>
           </form>

@@ -1,7 +1,11 @@
-// NUNP site form endpoints. Replace placeholders with real endpoints (Formspree or EmailJS webhook URL).
+// NUNP site form endpoints. Replace placeholders with real Google Sheets Apps Script Web App URLs or webhooks.
 window.NUNP_FORM_ENDPOINTS = {
-  // Example: 'join' form => 'https://formspree.io/f/your-form-id'
-  'join': 'https://formspree.io/f/your-form-id',
+  // Replace this with your Google Apps Script Web App URL for Join the Movement
+  'join': '',
+  
+  // Replace this with your Google Apps Script Web App URL for Become a Volunteer
+  'volunteer': '',
+  
   // Example contact form
   'contact': 'https://formspree.io/f/your-form-id',
 };
