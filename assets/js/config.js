@@ -9,13 +9,13 @@ window.EMAILJS_CONFIG = {
 // NUNP site form endpoints. Replace placeholders with real Google Sheets Apps Script Web App URLs or webhooks.
 window.NUNP_FORM_ENDPOINTS = {
   // Replace this with your Google Apps Script Web App URL for Join the Movement
-  'join': '',
+  'join': 'https://script.google.com/macros/s/AKfycbwCJmhxyZklWPNzIADi1YQBEgwxwGHbEyq9t80ZnnvzrD0raNG_xxBhepsvLOkjhE_j/exec',
   
   // Replace this with your Google Apps Script Web App URL for Become a Volunteer
   'volunteer': 'https://script.google.com/macros/s/AKfycbwwbXsvTwIM8cUc9ICf6PzLKM1IoZ0HXDZrFWLIoA8rY9QbYoHT6E74-bYSTr9uIKim5w/exec',
   
   // Example contact form
-  'contact': 'https://formspree.io/f/your-form-id',
+  'contact': '',
 };
 
 // Optionally, set a global default endpoint used when forms lack a specific endpoint.

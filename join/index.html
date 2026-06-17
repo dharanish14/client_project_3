@@ -246,6 +246,15 @@
               <p id="role-description" style="font-size: 0.88rem; margin: 8px 0 0 4px; color: var(--muted); line-height: 1.4; font-style: italic;">Contribute your skills, time, and energy to organize local projects, document business challenges, and drive positive neighborhood change with NUNP.</p>
             </div>
             <div class="field"><label for="join-message">Message</label><textarea id="join-message" name="Message"></textarea></div>
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label for="join-photo">Profile Photo</label>
+                <input id="join-photo" type="file" accept="image/*" required style="padding-top: 12px;">
+              </div>
+              <div class="field" style="display: flex; align-items: flex-end;">
+                <span id="join-photo-helper-text" style="font-size: 0.82rem; color: var(--muted); margin-bottom: 15px;">Max size: 500KB. For your printed ID card.</span>
+              </div>
+            </div>
             <button class="btn btn-primary" type="submit">Submit</button>
           </form>
         </div>

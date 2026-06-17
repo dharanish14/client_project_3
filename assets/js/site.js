@@ -159,12 +159,6 @@
               <li><a href="mailto:nunp.chennai@gmail.com">nunp.chennai@gmail.com</a></li>
               <li><a href="https://www.nunp.org" target="_blank" rel="noreferrer">www.nunp.org</a></li>
             </ul>
-            <div class="social-row" aria-label="Social media">
-              <a class="social-icon" href="#" aria-label="Instagram placeholder"><span class="social-initial">IG</span></a>
-              <a class="social-icon" href="#" aria-label="LinkedIn placeholder"><span class="social-initial">IN</span></a>
-              <a class="social-icon" href="#" aria-label="YouTube placeholder"><span class="social-initial">YT</span></a>
-              <a class="social-icon" href="#" aria-label="WhatsApp placeholder"><span class="social-initial">WA</span></a>
-            </div>
           </div>
         </div>
 
@@ -374,7 +368,7 @@
     });
   };
 
-  const showIDCardModal = (name, idNumber, photoDataUrl) => {
+  const showIDCardModal = (name, email, phone, idNumber, cityArea, role, photoDataUrl) => {
     const overlay = document.createElement('div');
     overlay.className = 'modal-overlay';
     
@@ -408,53 +402,55 @@
     cardContainer.innerHTML = `
       <div id="nunp-id-card-element" style="width: 300px; height: 450px; background: #132D4D; border-radius: 16px; overflow: hidden; position: relative; font-family: 'Inter', sans-serif; border: 3px solid #3BA2A0; box-shadow: 0 16px 36px rgba(19,45,77,0.3); color: #ffffff; display: flex; flex-direction: column; text-align: left;">
         <!-- Header -->
-        <div style="background: linear-gradient(135deg, #132D4D 0%, #1a3f6b 100%); padding: 16px; border-bottom: 2px solid #3BA2A0; text-align: center;">
-          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px;">
-            <img src="/NUNP_Logo.png" alt="NUNP" style="width: 36px; height: 36px; object-fit: contain;" onerror="this.src='https://raw.githubusercontent.com/dharanish14/client_project_3/main/NUNP_Logo.png';">
-            <span style="font-family: Montserrat, sans-serif; font-size: 1.35rem; font-weight: 800; letter-spacing: 0.08em; color: #ffffff;">NUNP</span>
+        <div style="background: linear-gradient(135deg, #132D4D 0%, #1a3f6b 100%); padding: 12px; border-bottom: 2px solid #3BA2A0; text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 2px;">
+            <img src="/NUNP_Logo.png" alt="NUNP" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.src='https://raw.githubusercontent.com/dharanish14/client_project_3/main/NUNP_Logo.png';">
+            <span style="font-family: Montserrat, sans-serif; font-size: 1.25rem; font-weight: 800; letter-spacing: 0.08em; color: #ffffff;">NUNP</span>
           </div>
-          <div style="font-size: 0.6rem; font-weight: 600; letter-spacing: 0.05em; color: #3BA2A0; text-transform: uppercase;">நம்ம ஊர் நம்ம பொறுப்பு</div>
+          <div style="font-size: 0.55rem; font-weight: 600; letter-spacing: 0.05em; color: #3BA2A0; text-transform: uppercase;">நம்ம ஊர் நம்ம பொறுப்பு</div>
         </div>
         
         <!-- Photo/Avatar & Name -->
-        <div style="padding: 20px 16px 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+        <div style="padding: 14px 16px 8px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
           <div style="width: 100%;">
             ${photoDataUrl ? `
-              <img src="${photoDataUrl}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #3BA2A0; display: block; margin: 0 auto 12px;">
+              <img src="${photoDataUrl}" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #3BA2A0; display: block; margin: 0 auto 8px;">
             ` : `
-              <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(59, 162, 160, 0.15); border: 2px dashed #3BA2A0; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3BA2A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(59, 162, 160, 0.15); border: 2px dashed #3BA2A0; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3BA2A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               </div>
             `}
-            <h3 style="font-family: Montserrat, sans-serif; font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0 0 4px 0; text-transform: uppercase; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${name}</h3>
-            <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; color: #3BA2A0; text-transform: uppercase; margin-bottom: 15px;">OFFICIAL VOLUNTEER</div>
+            <h3 style="font-family: Montserrat, sans-serif; font-size: 1.15rem; font-weight: 700; color: #ffffff; margin: 0 0 2px 0; text-transform: uppercase; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${name}</h3>
+            <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; color: #3BA2A0; text-transform: uppercase; margin-bottom: 8px;">${role || 'OFFICIAL VOLUNTEER'}</div>
           </div>
           
           <!-- ID Info Grid -->
-          <div style="background: rgba(255, 255, 255, 0.04); width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; text-align: left; margin-bottom: 10px;">
-            <div>
-              <div style="font-size: 0.5rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">Volunteer ID</div>
-              <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; font-family: Montserrat, sans-serif;">NUNP-${String(idNumber).padStart(6, '0')}</div>
+          <div style="background: rgba(255, 255, 255, 0.04); width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 5px; text-align: left; margin-bottom: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 3px;">
+              <span style="font-size: 0.55rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">ID</span>
+              <span style="font-size: 0.7rem; font-weight: 700; color: #ffffff; font-family: Montserrat, sans-serif;">NUNP-${String(idNumber).padStart(6, '0')}</span>
             </div>
-            <div>
-              <div style="font-size: 0.5rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">Status</div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: #2ee67a; display: flex; align-items: center; gap: 4px;">
-                <span style="width: 6px; height: 6px; border-radius: 50%; background: #2ee67a; display: inline-block;"></span> ACTIVE
-              </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 3px;">
+              <span style="font-size: 0.55rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">Phone</span>
+              <span style="font-size: 0.7rem; font-weight: 600; color: #ffffff;">${phone || 'N/A'}</span>
             </div>
-            <div style="grid-column: span 2;">
-              <div style="font-size: 0.5rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">Issue Date</div>
-              <div style="font-size: 0.75rem; font-weight: 600; color: #ffffff;">${issueDate}</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 3px;">
+              <span style="font-size: 0.55rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">Email</span>
+              <span style="font-size: 0.65rem; font-weight: 600; color: #ffffff; max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${email || ''}">${email || 'N/A'}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.55rem; color: #ACBDC6; text-transform: uppercase; letter-spacing: 0.04em;">City/Area</span>
+              <span style="font-size: 0.7rem; font-weight: 600; color: #ffffff; max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${cityArea || ''}">${cityArea || 'N/A'}</span>
             </div>
           </div>
         </div>
         
         <!-- Footer -->
-        <div style="background: #1a3f6b; padding: 10px; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; align-items: center; gap: 4px;">
-          <div style="display: flex; gap: 1.5px; height: 14px; width: 60%; background: transparent; opacity: 0.6; align-items: stretch; justify-content: center;">
+        <div style="background: #1a3f6b; padding: 8px 10px; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; align-items: center; gap: 2px;">
+          <div style="display: flex; gap: 1.5px; height: 12px; width: 60%; background: transparent; opacity: 0.6; align-items: stretch; justify-content: center;">
             ${barcodeMarkup}
           </div>
-          <div style="font-size: 0.55rem; letter-spacing: 0.1em; color: #ACBDC6; text-transform: uppercase; font-weight: 600; text-align: center; width: 100%;">Connect • Share • Empower</div>
+          <div style="font-size: 0.5rem; letter-spacing: 0.1em; color: #ACBDC6; text-transform: uppercase; font-weight: 600; text-align: center; width: 100%;">Connect • Share • Empower</div>
         </div>
       </div>
     `;
@@ -551,9 +547,9 @@
         };
         
         window.html2pdf().from(cardElement).set(opt).outputPdf('datauristring').then((pdfDataUri) => {
-          const email = sessionStorage.getItem('nunp_verified_email') || '';
+          const emailToUse = email || sessionStorage.getItem('nunp_verified_email') || '';
           window.emailjs.send(config.SERVICE_ID, config.TEMPLATE_ID_WELCOME, {
-            email: email,
+            email: emailToUse,
             name: name,
             volunteer_id: `NUNP-${String(idNumber).padStart(6, '0')}`,
             my_attachment: pdfDataUri
@@ -617,42 +613,50 @@
         const volunteerName = nameInput ? nameInput.value : 'User';
 
         let currentPhoto = '';
-        if (isVolunteerForm) {
+        if (isVolunteerForm || isJoinForm) {
           currentPhoto = volunteerPhotoBase64;
         }
 
+        let emailVal = '';
+        let phoneVal = '';
+        let cityAreaVal = '';
+        let roleVal = '';
+
         // Capture data before reset
         if (isJoinForm) {
-          const emailVal = form.querySelector('[name="Email"]')?.value || '';
-          const phoneVal = form.querySelector('[name="Phone"]')?.value || '';
-          const cityVal = form.querySelector('[name="City / Area"]')?.value || '';
-          const roleVal = form.querySelector('[name="Role"]')?.value || 'Volunteer';
+          emailVal = form.querySelector('[name="Email"]')?.value || '';
+          phoneVal = form.querySelector('[name="Phone"]')?.value || '';
+          cityAreaVal = form.querySelector('[name="City / Area"]')?.value || '';
+          roleVal = form.querySelector('[name="Role"]')?.value || 'Volunteer';
           const messageVal = form.querySelector('[name="Message"]')?.value || '';
           const joinData = {
-            id: `JOIN-${String(newMemberId).padStart(6, '0')}`,
+            id: `NUNP-${String(newMemberId).padStart(6, '0')}`,
             name: volunteerName,
             email: emailVal,
             phone: phoneVal,
-            city: cityVal,
+            city: cityAreaVal,
             role: roleVal,
             message: messageVal,
+            photo: volunteerPhotoBase64,
+            photoType: volunteerPhotoType,
             date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
           };
           const existing = JSON.parse(window.localStorage.getItem('nunp_joins') || '[]');
           existing.push(joinData);
           window.localStorage.setItem('nunp_joins', JSON.stringify(existing));
         } else if (isVolunteerForm) {
-          const emailVal = form.querySelector('[name="Email"]')?.value || '';
-          const phoneVal = form.querySelector('[name="Phone"]')?.value || '';
-          const areaVal = form.querySelector('[name="Area / Locality"]')?.value || '';
+          emailVal = form.querySelector('[name="Email"]')?.value || '';
+          phoneVal = form.querySelector('[name="Phone"]')?.value || '';
+          cityAreaVal = form.querySelector('[name="Area / Locality"]')?.value || '';
+          roleVal = 'Volunteer';
           const professionVal = form.querySelector('[name="Profession"]')?.value || '';
           const availabilityVal = form.querySelector('[name="Availability"]')?.value || 'Weekends';
           const volunteerData = {
-            id: `VOL-${String(newMemberId).padStart(6, '0')}`,
+            id: `NUNP-${String(newMemberId).padStart(6, '0')}`,
             name: volunteerName,
             email: emailVal,
             phone: phoneVal,
-            area: areaVal,
+            area: cityAreaVal,
             profession: professionVal,
             availability: availabilityVal,
             photo: volunteerPhotoBase64,
@@ -667,23 +671,31 @@
         if (endpoint) {
           if (endpoint.includes('your-form-id')) {
             form.reset();
-            showIDCardModal(volunteerName, newMemberId, currentPhoto);
+            if (isVolunteerForm || isJoinForm) {
+              showIDCardModal(volunteerName, emailVal, phoneVal, newMemberId, cityAreaVal, roleVal, currentPhoto);
+            } else {
+              showCustomSuccessModal('Message Sent', 'Thank you for contacting us. We will get back to you shortly.', true);
+            }
             volunteerPhotoBase64 = '';
             volunteerPhotoType = '';
             resetSubmitBtn();
             return;
           }
           
-          const extraPayload = isVolunteerForm ? {
+          const extraPayload = (isVolunteerForm || isJoinForm) ? {
             PhotoBase64: volunteerPhotoBase64,
             PhotoType: volunteerPhotoType,
-            Id: `VOL-${String(newMemberId).padStart(6, '0')}`
+            Id: `NUNP-${String(newMemberId).padStart(6, '0')}`
           } : {};
           
           sendViaEndpoint(endpoint, form, extraPayload)
             .then(() => {
               form.reset();
-              showIDCardModal(volunteerName, newMemberId, currentPhoto);
+              if (isVolunteerForm || isJoinForm) {
+                showIDCardModal(volunteerName, emailVal, phoneVal, newMemberId, cityAreaVal, roleVal, currentPhoto);
+              } else {
+                showCustomSuccessModal('Message Sent', 'Thank you for contacting us. We will get back to you shortly.', true);
+              }
               volunteerPhotoBase64 = '';
               volunteerPhotoType = '';
               resetSubmitBtn();
@@ -701,7 +713,7 @@
 
         // Default local submit (demo + mailto)
         const recipient = form.dataset.mailto;
-        const subject = encodeURIComponent(form.dataset.mailtoSubject || 'NUNP Volunteer Registration');
+        const subject = encodeURIComponent(form.dataset.mailtoSubject || 'NUNP Contact Message');
         const formData = new FormData(form);
         const bodyLines = [];
         formData.forEach((value, key) => {
@@ -710,11 +722,15 @@
         const body = encodeURIComponent(bodyLines.join('\n'));
         
         form.reset();
-        showIDCardModal(volunteerName, newMemberId, currentPhoto);
-        volunteerPhotoBase64 = '';
-        volunteerPhotoType = '';
-        resetSubmitBtn();
-        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        if (isVolunteerForm || isJoinForm) {
+          showIDCardModal(volunteerName, emailVal, phoneVal, newMemberId, cityAreaVal, roleVal, currentPhoto);
+          volunteerPhotoBase64 = '';
+          volunteerPhotoType = '';
+          resetSubmitBtn();
+        } else {
+          showCustomSuccessModal('Message Sent', 'Thank you for contacting us. We will get back to you shortly.', true);
+          resetSubmitBtn();
+        }
       });
     });
   };
@@ -739,6 +755,9 @@
   };
 
   const seedVolunteersIfEmpty = () => {
+    // Reset active members count to 100
+    window.localStorage.setItem('nunp-active-members-count', '100');
+
     // Clean out any old mock data from local storage
     if (window.localStorage.getItem('nunp_joins')) {
       const joins = JSON.parse(window.localStorage.getItem('nunp_joins') || '[]');
@@ -1101,6 +1120,31 @@
     if (window.lucide) window.lucide.createIcons();
   };
 
+  const enhanceJoinPhotoInput = () => {
+    const photoInput = document.getElementById('join-photo');
+    if (photoInput) {
+      photoInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        if (file.size > 500 * 1024) {
+          alert('File size exceeds the 500KB limit. Please upload a smaller image.');
+          photoInput.value = '';
+          volunteerPhotoBase64 = '';
+          volunteerPhotoType = '';
+          return;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          volunteerPhotoBase64 = evt.target.result;
+          volunteerPhotoType = file.type;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  };
+
   const init = () => {
     initEmailJS();
     injectCommonLayout();
@@ -1112,6 +1156,7 @@
     enhanceCounters();
     enhanceRoleSelector();
     enhanceFormMailto();
+    enhanceJoinPhotoInput();
     enhanceVolunteerClick();
     renderVolunteerPageContent();
     fixBrokenLogos();

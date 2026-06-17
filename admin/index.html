@@ -834,6 +834,40 @@
           console.error('Error loading live data from Google Sheet:', error);
         }
       }
+
+      const joinEndpoint = window.NUNP_FORM_ENDPOINTS ? window.NUNP_FORM_ENDPOINTS.join : '';
+      if (joinEndpoint && joinEndpoint.includes('script.google.com')) {
+        try {
+          const response = await fetch(joinEndpoint);
+          if (response.ok) {
+            const liveJoins = await response.json();
+            if (Array.isArray(liveJoins)) {
+              joinsDataset = liveJoins.map((row, idx) => {
+                let formattedDate = '';
+                if (row.Timestamp) {
+                  const dateObj = new Date(row.Timestamp);
+                  if (!isNaN(dateObj)) {
+                    formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                  }
+                }
+                
+                return {
+                  id: row["Join ID"] || `JOIN-live-${idx}`,
+                  name: row["Name"] || 'Unknown',
+                  phone: row["Phone"] || '',
+                  email: row["Email"] || '',
+                  city: row["City / Area"] || '',
+                  role: row["Role"] || 'Volunteer',
+                  message: row["Message"] || '',
+                  date: formattedDate || 'N/A'
+                };
+              });
+            }
+          }
+        } catch (error) {
+          console.error('Error loading live joins from Google Sheet:', error);
+        }
+      }
       
       updateStatsCounters();
       populateFilters();
@@ -914,6 +948,7 @@
       if (activeTab === 'joins') {
         tableHead.innerHTML = `
           <tr>
+            <th>Photo</th>
             <th>ID</th>
             <th>Name</th>
             <th>Contact Info</th>
@@ -921,7 +956,6 @@
             <th>Role</th>
             <th>Message</th>
             <th>Join Date</th>
-            <th style="text-align: right;">Actions</th>
           </tr>
         `;
 
@@ -947,7 +981,6 @@
             <th>Profession</th>
             <th>Availability</th>
             <th>Reg Date</th>
-            <th style="text-align: right;">Actions</th>
           </tr>
         `;
 
@@ -980,6 +1013,15 @@
           
           if (activeTab === 'joins') {
             tr.innerHTML = `
+              <td>
+                ${row.photo ? `
+                  <img src="${getDirectImageUrl(row.photo)}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(19,45,77,0.15);">
+                ` : `
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(19,45,77,0.06); display: flex; align-items: center; justify-content: center; color: var(--muted);">
+                    <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+                  </div>
+                `}
+              </td>
               <td><span class="volunteer-id-badge">${row.id || ''}</span></td>
               <td style="font-weight: 600; cursor: pointer;" class="trigger-modal-name">${row.name || ''}</td>
               <td>
@@ -994,11 +1036,6 @@
                 <div class="volunteer-message-text" title="Click to view message">${row.message || 'No message'}</div>
               </td>
               <td>${row.date || ''}</td>
-              <td style="text-align: right;">
-                <button class="btn btn-secondary btn-action btn-delete" style="padding: 6px 12px; margin-left: 6px;">
-                  <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
-                </button>
-              </td>
             `;
           } else {
             tr.innerHTML = `
@@ -1023,11 +1060,6 @@
               <td>${row.profession || 'N/A'}</td>
               <td><span class="volunteer-role-badge">${row.availability || 'Weekends'}</span></td>
               <td>${row.date || ''}</td>
-              <td style="text-align: right;">
-                <button class="btn btn-secondary btn-action btn-delete" style="padding: 6px 12px; margin-left: 6px;">
-                  <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
-                </button>
-              </td>
             `;
           }
 
@@ -1038,14 +1070,6 @@
           if (msgText) {
             msgText.addEventListener('click', () => openModal(row));
           }
-          
-          // Delete row click
-          tr.querySelector('.btn-delete').addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (confirm(`Are you sure you want to remove ${row.name}?`)) {
-              deleteItem(row.id);
-            }
-          });
 
           tableBody.appendChild(tr);
         });
@@ -1076,6 +1100,15 @@
         document.getElementById('m-title').textContent = "Join Movement Request Details";
         modalBody.innerHTML = `
           <div class="detail-grid">
+            <div class="detail-item full-width" style="display: flex; justify-content: center; margin-bottom: 15px;">
+              ${row.photo ? `
+                <img src="${getDirectImageUrl(row.photo)}" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--teal); box-shadow: var(--shadow-strong);">
+              ` : `
+                <div style="width: 120px; height: 120px; border-radius: 50%; background: rgba(59, 162, 160, 0.08); border: 2px dashed var(--teal); display: flex; align-items: center; justify-content: center; color: var(--teal);">
+                  <i data-lucide="user" style="width: 48px; height: 48px;"></i>
+                </div>
+              `}
+            </div>
             <div class="detail-item">
               <span class="detail-label">Join ID</span>
               <span class="detail-value" style="color: var(--teal); font-weight: 700;">${row.id || ''}</span>
