@@ -29,7 +29,7 @@
 
   const formEndpoints = window.NUNP_FORM_ENDPOINTS || {};
   const activeMembersKey = 'nunp-active-members-count';
-  const defaultActiveMembers = 100;
+  const defaultActiveMembers = 101;
   let volunteerPhotoBase64 = '';
   let volunteerPhotoType = '';
 
