@@ -611,6 +611,10 @@ p { margin: 0 0 1rem; color: var(--muted); }
   align-items: start;
 }
 
+.timeline.cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
 .timeline::before {
   content: '';
   position: absolute;
@@ -866,6 +870,7 @@ textarea { min-height: 160px; resize: vertical; }
   .gallery-grid,
   .role-grid,
   .timeline,
+  .timeline.cols-6,
   .form-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .timeline::before { display: none; }
@@ -927,6 +932,7 @@ textarea { min-height: 160px; resize: vertical; }
   .gallery-grid,
   .role-grid,
   .timeline,
+  .timeline.cols-6,
   .form-grid.cols-2,
   .stat-strip { grid-template-columns: 1fr; }
   .container { width: min(calc(100% - 24px), var(--container)); }
@@ -951,7 +957,7 @@ textarea { min-height: 160px; resize: vertical; }
   .grid { gap: 16px; }
   .grid.cols-2, .grid.cols-3, .grid.cols-4, .grid.cols-5, .gallery-grid { grid-template-columns: 1fr; }
   .role-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .timeline { grid-template-columns: 1fr; }
+  .timeline, .timeline.cols-6 { grid-template-columns: 1fr; }
 
   .form-grid { gap: 12px; }
   input, textarea, select { padding: 12px 14px; border-radius: 12px; }

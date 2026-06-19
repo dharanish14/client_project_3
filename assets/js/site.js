@@ -755,9 +755,6 @@
   };
 
   const seedVolunteersIfEmpty = () => {
-    // Reset active members count to 100
-    window.localStorage.setItem('nunp-active-members-count', '100');
-
     // Clean out any old mock data from local storage
     if (window.localStorage.getItem('nunp_joins')) {
       const joins = JSON.parse(window.localStorage.getItem('nunp_joins') || '[]');
@@ -769,6 +766,20 @@
       const filteredVols = vols.filter(v => v.id && !v.id.startsWith('VOL-00010'));
       window.localStorage.setItem('nunp_volunteers', JSON.stringify(filteredVols));
     }
+
+    // Calculate active members count dynamically based on current registrations
+    const joins = JSON.parse(window.localStorage.getItem('nunp_joins') || '[]');
+    const volunteers = JSON.parse(window.localStorage.getItem('nunp_volunteers') || '[]');
+    const uniqueEmails = new Set();
+    joins.forEach(j => {
+      if (j.email) uniqueEmails.add(j.email.trim().toLowerCase());
+    });
+    volunteers.forEach(v => {
+      if (v.email) uniqueEmails.add(v.email.trim().toLowerCase());
+    });
+
+    const count = defaultActiveMembers + uniqueEmails.size;
+    window.localStorage.setItem('nunp-active-members-count', String(count));
   };
 
   const initEmailJS = () => {
