@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Every complaint is an opportunity waiting for someone to take responsibility. Learn how moving from complaining to contributing can transform your community.">
+  <meta property="og:title" content="From Complaints to Contribution: Becoming an Active Citizen">
+  <meta property="og:description" content="Join the NUNP movement to become an active citizen.">
+  <meta property="og:image" content="/assets/complaints_to_contribution.jpg">
+  <title>From Complaints to Contribution: Becoming an Active Citizen — NUNP</title>
+  <meta name="theme-color" content="#132D4D">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--navy);
+    }
+    .article-content p {
+      margin-bottom: 1.6rem;
+    }
+    .article-content h2 {
+      font-size: 1.8rem;
+      margin: 2.5rem 0 1.2rem;
+      color: var(--navy);
+      border-bottom: 2px solid rgba(59, 162, 160, 0.15);
+      padding-bottom: 8px;
+    }
+    .article-content h3 {
+      font-size: 1.35rem;
+      margin: 2rem 0 1rem;
+      color: var(--navy);
+    }
+    .callout-box {
+      background: rgba(59, 162, 160, 0.06);
+      border-left: 5px solid var(--teal);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 24px;
+      margin: 2rem 0;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(19, 45, 77, 0.1);
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 14px 18px;
+      text-align: left;
+    }
+    .comparison-table th {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .comparison-table tr:nth-child(even) {
+      background: var(--soft-bg);
+    }
+    .comparison-table td {
+      border-bottom: 1px solid rgba(19, 45, 77, 0.08);
+      color: var(--text);
+    }
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 2rem 0;
+    }
+    .role-card-mini {
+      background: #fff;
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(19, 45, 77, 0.08);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .role-card-mini h4 {
+      color: var(--navy);
+      font-size: 1.1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .role-card-mini p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .checklist-card {
+      background: linear-gradient(135deg, rgba(59, 162, 160, 0.08) 0%, rgba(19, 45, 77, 0.03) 100%);
+      border: 1px solid rgba(59, 162, 160, 0.2);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin: 2rem 0;
+    }
+    .checklist-card h3 {
+      margin-top: 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .checklist-item:last-child {
+      margin-bottom: 0;
+    }
+    .checklist-item i {
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 24px;
+      transition: transform 0.2s ease;
+    }
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+    @media (max-width: 768px) {
+      .role-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body data-page="blog">
+  <div data-site-header></div>
+  <main>
+    <section class="hero hero-dark">
+      <div class="container reveal" data-aos="fade-up">
+        <a href="/blog/" class="back-btn"><i data-lucide="arrow-left"></i> Back to Blog</a>
+        <div class="eyebrow dark">Civic Education · Learn</div>
+        <h1 style="font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.2; margin-top: 10px;">From Complaints to Contribution: Becoming an Active Citizen</h1>
+        <div class="article-meta">
+          <span><i data-lucide="folder"></i> Civic Education</span>
+          <span><i data-lucide="book-open"></i> Content Pillar: Learn</span>
+          <span><i data-lucide="clock"></i> 8–10 Minutes Read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-container">
+          <article class="article-content reveal" data-aos="fade-up">
+            <div style="margin-bottom: 2rem; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-strong);">
+              <img src="/assets/complaints_to_contribution.jpg" alt="From Complaints to Contribution Poster" style="width: 100%; height: auto; display: block;">
+            </div>
+            
+            <p class="lead" style="font-size: 1.25rem; line-height: 1.7; color: var(--navy); font-weight: 500;">
+              Every complaint is an opportunity waiting for someone to take responsibility.
+            </p>
+            
+            <p>We have all done it.</p>
+            <p>We complain about traffic, garbage on the streets, damaged roads, water shortages, pollution, poor public services, or the lack of greenery in our neighborhoods.</p>
+            <p>The conversations happen everywhere—at home, in tea shops, on college campuses, in WhatsApp groups, and across social media.</p>
+            <p>For a few minutes, everyone agrees that something is wrong. Then everyone goes back to their daily routine. The problem remains exactly where it was.</p>
+            
+            <p>Now imagine a different situation.</p>
+            <p>A few residents document the issue, inform the concerned authorities, organize volunteers, create awareness among neighbors, and follow up until the problem is resolved.</p>
+            <p>The difference between these two situations is not money, influence, or power. The difference is <strong>active citizenship</strong>.</p>
+            <p>Communities improve when people move from complaining about problems to contributing towards solutions.</p>
+
+            <h2>What Does It Mean to Be an Active Citizen?</h2>
+            <p>An active citizen is someone who understands that society is a shared responsibility. Instead of asking, <em>"Why isn't anyone doing something?"</em> they ask, <strong>"What can I do to make this better?"</strong></p>
+            <p>Active citizens participate in their communities, support positive initiatives, respect public spaces, stay informed, volunteer their time, and encourage others to do the same.</p>
+            <p>They recognize that lasting change is created through consistent participation rather than occasional criticism.</p>
+
+            <h2>Why Complaints Alone Never Create Change</h2>
+            <p>Complaints can be useful. They bring attention to problems and highlight issues that require action. However, complaints without participation rarely produce meaningful results.</p>
+            <p>When citizens only criticize:</p>
+            <ul style="margin-bottom: 24px; padding-left: 20px;">
+              <li>Problems continue for longer periods.</li>
+              <li>Trust within communities decreases.</li>
+              <li>People become disconnected from one another.</li>
+              <li>Responsibility is shifted to someone else.</li>
+            </ul>
+            <p>Contribution changes this cycle. Even a small positive action creates momentum and encourages others to participate. Every successful community initiative begins with someone deciding to move beyond words.</p>
+
+            <h2>The Mindset Shift</h2>
+            <p>The journey from passive citizen to active citizen begins with a simple change in thinking.</p>
+            
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Passive Mindset</th>
+                  <th>Active Citizen Mindset</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Someone should fix this.</td>
+                  <td><strong>How can I help solve this?</strong></td>
+                </tr>
+                <tr>
+                  <td>This is not my responsibility.</td>
+                  <td><strong>This community belongs to all of us.</strong></td>
+                </tr>
+                <tr>
+                  <td>Nothing will change.</td>
+                  <td><strong>Small actions create progress.</strong></td>
+                </tr>
+                <tr>
+                  <td>I am only one person.</td>
+                  <td><strong>Every movement starts with one person.</strong></td>
+                </tr>
+                <tr>
+                  <td>Complaining is enough.</td>
+                  <td><strong>Participation creates impact.</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <p style="text-align: center; font-style: italic; color: var(--teal); font-weight: 500; margin-bottom: 2rem;">
+              Changing our mindset changes our behavior, and changing behavior changes communities.
+            </p>
+
+            <h2>The Five Principles of Active Citizenship</h2>
+            
+            <div style="display: grid; gap: 16px; margin: 2rem 0;">
+              <div class="role-card-mini" style="flex-direction: row; align-items: flex-start; gap: 18px;">
+                <div class="icon-badge" style="margin: 0; flex-shrink: 0; background: rgba(59, 162, 160, 0.1); color: var(--teal);"><i data-lucide="shield"></i></div>
+                <div>
+                  <h4 style="font-size: 1.15rem; margin-bottom: 4px;">1. Take Responsibility</h4>
+                  <p style="margin: 0; margin-bottom: 8px;">Every citizen benefits from public spaces, public services, and community resources. Taking responsibility means protecting and improving what we all share.</p>
+                  <p style="margin: 0; font-size: 0.95rem; color: var(--muted);">
+                    Responsibility starts with everyday actions: following civic rules, respecting public property, reporting genuine issues, helping neighbors, and participating in local initiatives. Leadership begins with responsibility.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="role-card-mini" style="flex-direction: row; align-items: flex-start; gap: 18px;">
+                <div class="icon-badge" style="margin: 0; flex-shrink: 0; background: rgba(59, 162, 160, 0.1); color: var(--teal);"><i data-lucide="book-open"></i></div>
+                <div>
+                  <h4 style="font-size: 1.15rem; margin-bottom: 4px;">2. Stay Informed</h4>
+                  <p style="margin: 0; margin-bottom: 8px;">An informed citizen makes better decisions. Learn about local governance, government schemes, community organizations, environmental issues, and civic rights and responsibilities.</p>
+                  <p style="margin: 0; font-size: 0.95rem; color: var(--muted);">
+                    Knowledge empowers meaningful participation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="role-card-mini" style="flex-direction: row; align-items: flex-start; gap: 18px;">
+                <div class="icon-badge" style="margin: 0; flex-shrink: 0; background: rgba(59, 162, 160, 0.1); color: var(--teal);"><i data-lucide="users"></i></div>
+                <div>
+                  <h4 style="font-size: 1.15rem; margin-bottom: 4px;">3. Participate Instead of Observing</h4>
+                  <p style="margin: 0; margin-bottom: 8px;">Communities need participants more than spectators. Volunteer for tree plantation drives, blood donation camps, campus awareness programs, neighborhood clean-up activities, digital literacy initiatives, or health and wellness campaigns.</p>
+                  <p style="margin: 0; font-size: 0.95rem; color: var(--muted);">
+                    You do not need permission to contribute positively.
+                  </p>
+                </div>
+              </div>
+
+              <div class="role-card-mini" style="flex-direction: row; align-items: flex-start; gap: 18px;">
+                <div class="icon-badge" style="margin: 0; flex-shrink: 0; background: rgba(59, 162, 160, 0.1); color: var(--teal);"><i data-lucide="handshake"></i></div>
+                <div>
+                  <h4 style="font-size: 1.15rem; margin-bottom: 4px;">4. Collaborate with Others</h4>
+                  <p style="margin: 0; margin-bottom: 8px;">Many community problems cannot be solved individually. Successful initiatives often involve students, residents, volunteers, local businesses, educational institutions, and government departments.</p>
+                  <p style="margin: 0; font-size: 0.95rem; color: var(--muted);">
+                    When people work together, solutions become more sustainable.
+                  </p>
+                </div>
+              </div>
+
+              <div class="role-card-mini" style="flex-direction: row; align-items: flex-start; gap: 18px;">
+                <div class="icon-badge" style="margin: 0; flex-shrink: 0; background: rgba(59, 162, 160, 0.1); color: var(--teal);"><i data-lucide="sparkles"></i></div>
+                <div>
+                  <h4 style="font-size: 1.15rem; margin-bottom: 4px;">5. Inspire Through Action</h4>
+                  <p style="margin: 0; margin-bottom: 8px;">People are influenced more by actions than by words. A person who spends two hours cleaning a public space often inspires more volunteers than someone who spends two hours criticizing the condition of that space.</p>
+                  <p style="margin: 0; font-size: 0.95rem; color: var(--muted);">
+                    Positive action is contagious.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Small Contributions That Create Big Impact</h2>
+            <p>Many people believe community service requires significant time or financial resources. The reality is different. You can contribute by:</p>
+            <ul style="list-style-type: none; padding-left: 0; display: grid; gap: 12px; margin-bottom: 24px;">
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Helping a senior citizen access an online government service</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Teaching digital skills to a neighbor</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Organizing a small campus awareness session</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Supporting local businesses</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Reporting civic issues responsibly</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Planting and maintaining trees</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Volunteering for community events</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px;"></i> <span>Sharing verified information instead of misinformation</span></li>
+            </ul>
+            <p>These simple actions strengthen the social fabric of a community.</p>
+
+            <div class="callout-box" style="background: rgba(19, 45, 77, 0.04); border-color: var(--navy);">
+              <h3 style="margin-top: 0; display: flex; align-items: center; gap: 10px; color: var(--navy);"><i data-lucide="book-open" style="color: var(--teal);"></i> A Story of Active Citizenship</h3>
+              <p>A college student noticed that many streetlights near her campus were not functioning. Students regularly complained about safety, but nothing changed.</p>
+              <p>Instead of adding another complaint, she documented the locations, submitted a formal grievance, followed up with local authorities, and encouraged classmates to support the effort.</p>
+              <p>Within a few weeks, the streetlights were repaired.</p>
+              <p style="margin-bottom: 0; font-weight: 600; color: var(--navy);">No protest. No confrontation. No special authority. Just responsible participation. That is the power of active citizenship.</p>
+            </div>
+
+            <h2>Why Young People Matter</h2>
+            <p>Young citizens bring energy, creativity, technology, and fresh perspectives. They are often the first to recognize emerging challenges and the quickest to organize solutions.</p>
+            <p>When students volunteer, conduct surveys, create awareness campaigns, or support local initiatives, they develop skills that extend far beyond the classroom:</p>
+            <div class="role-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px;">
+              <div class="role-card-mini" style="padding: 12px 16px; align-items: center; justify-content: center; text-align: center;">
+                <h4 style="font-size: 1rem; color: var(--navy); gap: 6px; justify-content: center;"><i data-lucide="award"></i> Leadership</h4>
+              </div>
+              <div class="role-card-mini" style="padding: 12px 16px; align-items: center; justify-content: center; text-align: center;">
+                <h4 style="font-size: 1rem; color: var(--navy); gap: 6px; justify-content: center;"><i data-lucide="message-square"></i> Communication</h4>
+              </div>
+              <div class="role-card-mini" style="padding: 12px 16px; align-items: center; justify-content: center; text-align: center;">
+                <h4 style="font-size: 1rem; color: var(--navy); gap: 6px; justify-content: center;"><i data-lucide="users"></i> Teamwork</h4>
+              </div>
+              <div class="role-card-mini" style="padding: 12px 16px; align-items: center; justify-content: center; text-align: center;">
+                <h4 style="font-size: 1rem; color: var(--navy); gap: 6px; justify-content: center;"><i data-lucide="wrench"></i> Problem-solving</h4>
+              </div>
+              <div class="role-card-mini" style="padding: 12px 16px; align-items: center; justify-content: center; text-align: center;">
+                <h4 style="font-size: 1rem; color: var(--navy); gap: 6px; justify-content: center;"><i data-lucide="list-todo"></i> Project Mgmt</h4>
+              </div>
+              <div class="role-card-mini" style="padding: 12px 16px; align-items: center; justify-content: center; text-align: center;">
+                <h4 style="font-size: 1rem; color: var(--navy); gap: 6px; justify-content: center;"><i data-lucide="volume-2"></i> Public Speaking</h4>
+              </div>
+              <div class="role-card-mini" style="padding: 12px 16px; align-items: center; justify-content: center; text-align: center;">
+                <h4 style="font-size: 1rem; color: var(--navy); gap: 6px; justify-content: center;"><i data-lucide="heart"></i> Social Responsibility</h4>
+              </div>
+            </div>
+            <p>Communities become stronger while young people become better leaders. Everyone benefits.</p>
+
+            <h2>Barriers That Stop People from Contributing</h2>
+            <p>Many citizens want to help but hesitate because of common misconceptions:</p>
+            <ul style="list-style-type: none; padding-left: 0; display: grid; gap: 16px; margin-bottom: 24px;">
+              <li>
+                <strong>❌ "I don't have enough time."</strong><br>
+                <span style="color: var(--muted); font-size: 0.95rem;">Response: Even one hour each month can make a difference.</span>
+              </li>
+              <li>
+                <strong>❌ "I don't know where to start."</strong><br>
+                <span style="color: var(--muted); font-size: 0.95rem;">Response: Start with one issue that affects your immediate neighborhood.</span>
+              </li>
+              <li>
+                <strong>❌ "Someone else is already handling it."</strong><br>
+                <span style="color: var(--muted); font-size: 0.95rem;">Response: Additional responsible citizens always strengthen community efforts.</span>
+              </li>
+              <li>
+                <strong>❌ "My contribution is too small."</strong><br>
+                <span style="color: var(--muted); font-size: 0.95rem;">Response: Every large movement begins with one small action repeated consistently.</span>
+              </li>
+              <li>
+                <strong>❌ "I am not a leader."</strong><br>
+                <span style="color: var(--muted); font-size: 0.95rem;">Response: Active citizenship is the foundation of leadership.</span>
+              </li>
+            </ul>
+
+            <div class="checklist-card">
+              <h3 style="display: flex; align-items: center; gap: 10px; color: var(--navy);"><i data-lucide="check-square"></i> Five Actions You Can Take This Week</h3>
+              <p>If you want to become an active citizen, begin with simple commitments:</p>
+              <div class="checklist-item"><i data-lucide="circle"></i> <span>Learn about one local government service.</span></div>
+              <div class="checklist-item"><i data-lucide="circle"></i> <span>Volunteer for one community activity.</span></div>
+              <div class="checklist-item"><i data-lucide="circle"></i> <span>Identify one neighborhood issue and document it responsibly.</span></div>
+              <div class="checklist-item"><i data-lucide="circle"></i> <span>Encourage one friend or family member to participate.</span></div>
+              <div class="checklist-item"><i data-lucide="circle"></i> <span>Spend one hour improving a shared public space or supporting a local initiative.</span></div>
+              <p style="margin-top: 16px; margin-bottom: 0; font-size: 0.95rem; font-style: italic; color: var(--muted);">Do not wait for the perfect opportunity. Start with the opportunity that already exists around you.</p>
+            </div>
+
+            <h2>Building Better Communities Together</h2>
+            <p>Communities do not become cleaner, safer, healthier, or more inclusive by accident. They improve because ordinary people consistently choose participation over indifference.</p>
+            <p>Every volunteer, every student leader, every responsible resident, and every local entrepreneur contributes to creating stronger neighborhoods.</p>
+            <p>Real change is rarely created by one extraordinary individual. It is created by thousands of ordinary citizens making responsible choices every day.</p>
+
+            <h2>Conclusion</h2>
+            <p>Every complaint contains an important question: <strong>"Who will take the first step?"</strong></p>
+            <p>An active citizen answers that question with action. You may not solve every challenge facing your community, but you can influence the people around you, contribute your skills, and inspire others to participate.</p>
+            <p>The future of our neighborhoods, campuses, and cities depends not only on governments or institutions but also on citizens who believe that responsibility belongs to everyone.</p>
+            <p>The journey from complaint to contribution is also the journey from observer to leader. And it begins with one simple decision:</p>
+            <p style="font-size: 1.4rem; font-weight: 800; text-align: center; color: var(--teal); margin: 2rem 0;">"I will be part of the solution."</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-band section-dark section tight">
+      <div class="container split-grid columns-2">
+        <div class="reveal" data-aos="fade-up">
+          <div class="eyebrow dark">Join the Movement</div>
+          <h2>Join the NUNP Movement</h2>
+          <p>Every community improves when ordinary people choose to take responsibility instead of waiting for someone else. Become part of a growing movement of citizens who believe that learning should lead to action.</p>
+        </div>
+        <div class="reveal" data-aos="fade-left" style="display:flex; align-items:center; gap: 14px; flex-wrap: wrap;">
+          <a class="btn btn-light" href="/join/">Join Now</a>
+          <a class="btn btn-secondary" href="/volunteer/register.html" style="border-color: #fff; color: #fff;">Become a Volunteer</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div data-site-footer></div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.min.js"></script>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
