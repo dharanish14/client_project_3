@@ -164,7 +164,7 @@
 
         <div class="footer-bottom">
           <div class="footer-bottom-inner">
-            <span>© 2025 NUNP. All Rights Reserved.</span>
+            <span>© 2026 NUNP. All Rights Reserved.</span>
             <span>நம்ம ஊர். நம்ம பொறுப்பு. நம்ம செயல்.</span>
           </div>
         </div>
