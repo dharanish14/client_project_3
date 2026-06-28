@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project Planning for Beginners: Turning Ideas into Action. Learn how to define problems, set goals, identify stakeholders, and build timelines for community initiatives.">
+  <meta property="og:title" content="Project Planning for Beginners: Turning Ideas into Action">
+  <meta property="og:description" content="A simple guide to project planning for community initiatives, startups, awareness campaigns, and volunteer programs.">
+  <meta property="og:image" content="/assets/project_planning_beginners.png">
+  <title>Project Planning for Beginners: Turning Ideas into Action — NUNP</title>
+  <meta name="theme-color" content="#132D4D">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--navy);
+    }
+    .article-content p {
+      margin-bottom: 1.6rem;
+    }
+    .article-content h2 {
+      font-size: 1.8rem;
+      margin: 2.5rem 0 1.2rem;
+      color: var(--navy);
+      border-bottom: 2px solid rgba(59, 162, 160, 0.15);
+      padding-bottom: 8px;
+    }
+    .article-content h3 {
+      font-size: 1.35rem;
+      margin: 2rem 0 1rem;
+      color: var(--navy);
+    }
+    .callout-box {
+      background: rgba(59, 162, 160, 0.06);
+      border-left: 5px solid var(--teal);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 24px;
+      margin: 2rem 0;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 2.5rem 0;
+    }
+    .step-card {
+      background: #fff;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(19, 45, 77, 0.08);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+    .step-card h3 {
+      color: var(--navy);
+      font-size: 1.25rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .step-card h3 span.num {
+      background: var(--teal);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-card p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .step-card ul {
+      margin: 8px 0 0 0;
+      padding-left: 20px;
+      font-size: 0.95rem;
+      color: var(--text);
+      display: grid;
+      gap: 6px;
+    }
+    
+    /* Layout for Key Elements shown on the poster */
+    .elements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 2.5rem 0;
+    }
+    @media (max-width: 600px) {
+      .elements-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .element-card {
+      background: linear-gradient(135deg, rgba(59, 162, 160, 0.04) 0%, rgba(19, 45, 77, 0.02) 100%);
+      border: 1px solid rgba(59, 162, 160, 0.15);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all 0.2s ease;
+    }
+    .element-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+    .element-icon {
+      background: var(--navy);
+      color: #fff;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .element-info h4 {
+      color: var(--navy);
+      font-size: 1.1rem;
+      margin: 0 0 4px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .element-info p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    
+    .planning-questions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 2rem 0;
+    }
+    @media (max-width: 768px) {
+      .planning-questions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .planning-questions {
+        grid-template-columns: 1fr;
+      }
+    }
+    .question-box {
+      background: var(--soft-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .question-box span.q-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .question-box p.q-text {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .checklist-card {
+      background: linear-gradient(135deg, rgba(59, 162, 160, 0.08) 0%, rgba(19, 45, 77, 0.03) 100%);
+      border: 1px solid rgba(59, 162, 160, 0.2);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin: 2rem 0;
+    }
+    .checklist-card h3 {
+      margin-top: 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .checklist-item:last-child {
+      margin-bottom: 0;
+    }
+    .checklist-item i {
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 24px;
+      transition: transform 0.2s ease;
+    }
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+  </style>
+</head>
+<body data-page="blog">
+  <div data-site-header></div>
+  <main>
+    <section class="hero hero-dark">
+      <div class="container reveal" data-aos="fade-up">
+        <a href="/blog/" class="back-btn"><i data-lucide="arrow-left"></i> Back to Blog</a>
+        <div class="eyebrow dark">Skill Development · Grow</div>
+        <h1 style="font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.2; margin-top: 10px;">Project Planning for Beginners: Turning Ideas into Action</h1>
+        <div class="article-meta">
+          <span><i data-lucide="folder"></i> Skill Development</span>
+          <span><i data-lucide="book-open"></i> Content Pillar: Grow</span>
+          <span><i data-lucide="clock"></i> 6–8 Minutes Read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-container">
+          <article class="article-content reveal" data-aos="fade-up">
+            <div style="margin-bottom: 2rem; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-strong);">
+              <img src="/assets/project_planning_beginners.png" alt="Project Planning for Beginners Poster" style="width: 100%; height: auto; display: block;">
+            </div>
+
+            <p class="lead" style="font-size: 1.25rem; line-height: 1.7; color: var(--navy); font-weight: 500;">Every Great Project Starts with a Simple Idea</p>
+            
+            <p>Every successful community initiative, startup, awareness campaign, research study, or volunteer program begins with a single idea. But ideas alone rarely create impact.</p>
+            <p>Many promising ideas never move beyond conversations because they lack one essential ingredient: <strong>A clear plan.</strong></p>
+            <p>Project planning is the bridge between inspiration and execution. It helps individuals transform good intentions into organized action, enabling teams to work together, use resources effectively, and achieve meaningful results. The good news is that project planning is not reserved for experienced professionals. It is a practical skill that anyone can learn.</p>
+
+            <h2>What Is Project Planning?</h2>
+            <p>At its core, project planning is the process of defining clear pathways for your ideas. Without a plan, even enthusiastic teams can become confused, miss deadlines, or lose focus. While planning does not eliminate challenges, it prepares teams to handle them more effectively. A solid project plan provides direction by deciding:</p>
+
+            <div class="planning-questions">
+              <div class="question-box">
+                <span class="q-label">The Action</span>
+                <p class="q-text">What needs to be done</p>
+              </div>
+              <div class="question-box">
+                <span class="q-label">The Purpose</span>
+                <p class="q-text">Why it matters</p>
+              </div>
+              <div class="question-box">
+                <span class="q-label">The Team</span>
+                <p class="q-text">Who will be involved</p>
+              </div>
+              <div class="question-box">
+                <span class="q-label">The Method</span>
+                <p class="q-text">How the work will be completed</p>
+              </div>
+              <div class="question-box">
+                <span class="q-label">The Schedule</span>
+                <p class="q-text">When each activity should happen</p>
+              </div>
+              <div class="question-box">
+                <span class="q-label">The Evaluation</span>
+                <p class="q-text">How success will be measured</p>
+              </div>
+            </div>
+
+            <h2>Key Elements of a Successful Project Plan</h2>
+            <p>Before jumping into the execution steps, it helps to understand the foundational elements that keep a project stable and aligned. These six components represent the structure of a strong project:</p>
+
+            <div class="elements-grid">
+              <div class="element-card">
+                <div class="element-icon"><i data-lucide="target"></i></div>
+                <div class="element-info">
+                  <h4>Purpose</h4>
+                  <p>Know why your project matters. A strong sense of purpose anchors every decision you make.</p>
+                </div>
+              </div>
+              <div class="element-card">
+                <div class="element-icon"><i data-lucide="users"></i></div>
+                <div class="element-info">
+                  <h4>People</h4>
+                  <p>Build a motivated and diverse team. Define who supports, implements, and benefits from the work.</p>
+                </div>
+              </div>
+              <div class="element-card">
+                <div class="element-icon"><i data-lucide="git-commit"></i></div>
+                <div class="element-info">
+                  <h4>Process</h4>
+                  <p>Plan each step with clarity. Establish clear sequences of tasks to move seamlessly from start to finish.</p>
+                </div>
+              </div>
+              <div class="element-card">
+                <div class="element-icon"><i data-lucide="clock"></i></div>
+                <div class="element-info">
+                  <h4>Time</h4>
+                  <p>Use time wisely and stay on track. Establish milestones and realistic deadlines to build momentum.</p>
+                </div>
+              </div>
+              <div class="element-card">
+                <div class="element-icon"><i data-lucide="package"></i></div>
+                <div class="element-info">
+                  <h4>Resources</h4>
+                  <p>Use people, skills, and tools effectively. Maximize the value of what you have to achieve your goals.</p>
+                </div>
+              </div>
+              <div class="element-card">
+                <div class="element-icon"><i data-lucide="trending-up"></i></div>
+                <div class="element-info">
+                  <h4>Impact</h4>
+                  <p>Focus on creating real change. Measure the tangible benefits and outcomes of your efforts.</p>
+                </div>
+              </div>
+            </div>
+
+            <h2>8 Simple Steps to Plan Any Project</h2>
+            <p>To turn your idea into a concrete initiative, follow these eight logical steps. They provide a structured approach that guides you from understanding the problem to evaluating your final impact.</p>
+
+            <div class="steps-grid">
+              <!-- Step 1 -->
+              <div class="step-card">
+                <h3><span class="num">1</span> <i data-lucide="search"></i> Clearly Define the Problem</h3>
+                <p>Many beginners focus immediately on solutions. Experienced project leaders begin with understanding the problem. Ask questions such as:</p>
+                <ul>
+                  <li>What issue are we trying to solve?</li>
+                  <li>Who is affected?</li>
+                  <li>Why does this problem exist?</li>
+                  <li>What evidence supports the need for action?</li>
+                </ul>
+                <div class="callout-box" style="margin: 1rem 0 0 0; padding: 16px;">
+                  <p style="margin: 0; font-style: italic;"><strong>Example:</strong> Instead of saying, <em>"Let's organize a community event,"</em> begin with, <em>"Many residents are unaware of available health services. How can we improve awareness?"</em> Understanding the problem leads to better solutions.</p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card">
+                <h3><span class="num">2</span> <i data-lucide="target"></i> Set a Clear Goal</h3>
+                <p>A project should have one primary objective. Good goals answer the question: <em>What should be different after this project is completed?</em> Clear goals help everyone work toward the same outcome.</p>
+                <p style="margin-bottom: 0; font-weight: 500;">Good examples include:</p>
+                <ul>
+                  <li>Increase awareness about health and wellness.</li>
+                  <li>Conduct a community needs assessment.</li>
+                  <li>Survey residents to understand local priorities.</li>
+                  <li>Improve civic awareness among students.</li>
+                  <li>Recruit volunteers for neighborhood initiatives.</li>
+                </ul>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card">
+                <h3><span class="num">3</span> <i data-lucide="user-check"></i> Identify Your Stakeholders</h3>
+                <p>Every project involves people. Some participate directly; others are affected by the outcome. Engaging stakeholders early builds trust and improves collaboration. Consider questions such as:</p>
+                <ul>
+                  <li>Who benefits from this project?</li>
+                  <li>Who can support the initiative?</li>
+                  <li>Who should be consulted?</li>
+                  <li>Who will help implement the activities?</li>
+                </ul>
+                <p style="margin: 8px 0 0 0; font-size: 0.95rem; color: var(--muted);">Stakeholders may include: <strong>Students, Faculty members, Community residents, Volunteers, Local organizations, Subject experts, or Government departments.</strong></p>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card">
+                <h3><span class="num">4</span> <i data-lucide="list-todo"></i> Break the Project into Smaller Tasks</h3>
+                <p>Large projects often seem overwhelming. Breaking them into manageable activities makes progress easier. For example, a community survey project might include:</p>
+                <ul style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px;">
+                  <li>1. Define survey objectives</li>
+                  <li>2. Prepare questionnaires</li>
+                  <li>3. Train volunteers</li>
+                  <li>4. Conduct field surveys</li>
+                  <li>5. Compile responses</li>
+                  <li>6. Analyze findings</li>
+                  <li>7. Prepare a report</li>
+                  <li>8. Share recommendations</li>
+                </ul>
+                <p style="margin-top: 8px; font-size: 0.95rem; font-style: italic; color: var(--muted);">Small tasks create momentum and make it easier to monitor progress.</p>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="step-card">
+                <h3><span class="num">5</span> <i data-lucide="calendar"></i> Build a Realistic Timeline</h3>
+                <p>Every project needs a schedule. Without deadlines, important activities are easily delayed. A simple timeline should identify:</p>
+                <ul>
+                  <li>Start date</li>
+                  <li>Key milestones</li>
+                  <li>Review meetings</li>
+                  <li>Completion date</li>
+                </ul>
+                <p style="margin-bottom: 0; font-weight: 500; color: var(--teal);">Remember: A realistic timeline is more valuable than an ambitious one that cannot be achieved. Consistency is more important than speed.</p>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="step-card">
+                <h3><span class="num">6</span> <i data-lucide="user-plus"></i> Assign Roles and Responsibilities</h3>
+                <p>Projects succeed when everyone knows what they are responsible for. Clarify responsibilities early to reduce confusion and improve accountability. For example:</p>
+                <ul>
+                  <li><strong>Project Lead:</strong> Coordinates overall execution.</li>
+                  <li><strong>Research Team:</strong> Conducts surveys and collects data.</li>
+                  <li><strong>Communications Team:</strong> Creates awareness and updates.</li>
+                  <li><strong>Volunteer Coordinator:</strong> Manages volunteers.</li>
+                  <li><strong>Documentation Team:</strong> Captures reports, photos, and outcomes.</li>
+                </ul>
+              </div>
+
+              <!-- Step 7 -->
+              <div class="step-card">
+                <h3><span class="num">7</span> <i data-lucide="alert-triangle"></i> Anticipate Challenges</h3>
+                <p>No project unfolds exactly as planned. Successful project leaders prepare for possible obstacles. Common challenges include:</p>
+                <ul style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px;">
+                  <li>Low volunteer participation</li>
+                  <li>Weather disruptions</li>
+                  <li>Scheduling conflicts</li>
+                  <li>Limited resources</li>
+                  <li>Delays in approvals</li>
+                  <li>Communication gaps</li>
+                </ul>
+                <p style="margin-top: 8px; margin-bottom: 0;">Ask: <em>"If this challenge occurs, what will we do?"</em> Preparing contingency plans improves confidence and resilience.</p>
+              </div>
+
+              <!-- Step 8 -->
+              <div class="step-card">
+                <h3><span class="num">8</span> <i data-lucide="bar-chart-3"></i> Measure Success</h3>
+                <p>A project is complete only when its outcomes are evaluated. Measure both activities and impact. For example:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;">
+                  <div>
+                    <h5 style="margin: 0 0 6px 0; color: var(--navy); font-size: 0.95rem; font-weight: 700;">Activity Metrics</h5>
+                    <ul style="padding-left: 16px; margin: 0; font-size: 0.9rem;">
+                      <li>Number of volunteers involved</li>
+                      <li>Surveys completed</li>
+                      <li>Workshops conducted</li>
+                      <li>Community members reached</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 style="margin: 0 0 6px 0; color: var(--navy); font-size: 0.95rem; font-weight: 700;">Impact Metrics</h5>
+                    <ul style="padding-left: 16px; margin: 0; font-size: 0.9rem;">
+                      <li>Increased awareness</li>
+                      <li>Improved participation</li>
+                      <li>Better understanding of community needs</li>
+                      <li>Actionable recommendations generated</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2>Common Mistakes Beginners Should Avoid</h2>
+            <p>Many first-time project leaders encounter similar challenges. Avoid these common mistakes:</p>
+            
+            <div class="checklist-card">
+              <div class="checklist-item"><i data-lucide="x-circle" style="color: #dc3545;"></i> <span>Starting without understanding the problem.</span></div>
+              <div class="checklist-item"><i data-lucide="x-circle" style="color: #dc3545;"></i> <span>Setting unrealistic goals.</span></div>
+              <div class="checklist-item"><i data-lucide="x-circle" style="color: #dc3545;"></i> <span>Trying to accomplish too much at once.</span></div>
+              <div class="checklist-item"><i data-lucide="x-circle" style="color: #dc3545;"></i> <span>Failing to assign responsibilities.</span></div>
+              <div class="checklist-item"><i data-lucide="x-circle" style="color: #dc3545;"></i> <span>Poor communication within the team.</span></div>
+              <div class="checklist-item"><i data-lucide="x-circle" style="color: #dc3545;"></i> <span>Ignoring feedback from stakeholders.</span></div>
+              <div class="checklist-item"><i data-lucide="x-circle" style="color: #dc3545;"></i> <span>Forgetting to evaluate outcomes.</span></div>
+              <p style="margin: 12px 0 0 0; font-size: 0.95rem; font-style: italic; color: var(--muted); text-align: center;">Learning from mistakes is part of becoming an effective project leader.</p>
+            </div>
+
+            <h2>Why Project Planning Is an Essential Life Skill</h2>
+            <p>Project planning extends far beyond community initiatives. The same skills are valuable in academic assignments, college leadership, professional careers, entrepreneurship, non-profit organizations, public service, and personal goals.</p>
+            <p>Individuals who can plan effectively are often better at managing time, solving problems, leading teams, and achieving meaningful outcomes. Project planning is not simply a management technique. It is a life skill.</p>
+
+            <div class="callout-box" style="background: rgba(19, 45, 77, 0.04); border-color: var(--navy);">
+              <h3 style="margin-top: 0; display: flex; align-items: center; gap: 10px; color: var(--navy);"><i data-lucide="sparkles" style="color: var(--teal);"></i> The NUNP Perspective</h3>
+              <p>At NUNP, every meaningful initiative begins with thoughtful planning. Whether conducting a community survey, organizing a health and wellness campaign, leading a youth engagement program, facilitating civic education, or implementing a local development project, successful execution depends on careful preparation.</p>
+              <p style="margin-bottom: 0; font-weight: 600; color: var(--navy);">We encourage young leaders to move beyond ideas and develop practical planning skills that enable them to create measurable community impact. Good intentions inspire action. Good planning sustains it.</p>
+            </div>
+
+            <h2>Conclusion</h2>
+            <p>Every successful project starts with a simple idea. But ideas become reality only when they are supported by clear goals, organized planning, collaborative teamwork, and consistent execution. You do not need years of experience to become an effective project planner. You simply need the willingness to think carefully, prepare thoroughly, and take the first step.</p>
+            
+            <p style="font-size: 1.15rem; font-style: italic; color: var(--navy); font-weight: 500; text-align: center; margin: 2rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0;">
+              Every large community initiative… Every successful organization… Every impactful campaign… Once began as a small idea with a well-structured plan. Because meaningful change does not happen by chance. It happens by design.
+            </p>
+
+            <div class="checklist-card" style="background: linear-gradient(135deg, rgba(19, 45, 77, 0.05) 0%, rgba(59, 162, 160, 0.05) 100%); border-color: var(--navy);">
+              <h3 style="display: flex; align-items: center; gap: 10px; color: var(--navy);"><i data-lucide="rocket" style="color: var(--teal);"></i> Start Planning. Start Leading.</h3>
+              <p>If you want to create meaningful impact, begin with a plan. Identify a challenge, build a team, define clear goals, and take action one step at a time.</p>
+              <p style="margin: 0; font-weight: 600; color: var(--navy);">At NUNP, we believe project planning empowers ordinary citizens to turn ideas into measurable community impact.</p>
+              <p style="margin: 12px 0 0 0; font-size: 1.1rem; font-weight: 700; color: var(--teal); text-align: center; letter-spacing: 0.05em;">NUNP – Connect. Share. Empower.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-band section-dark section tight">
+      <div class="container split-grid columns-2">
+        <div class="reveal" data-aos="fade-up">
+          <div class="eyebrow dark">Join the Movement</div>
+          <h2>Join the NUNP Movement</h2>
+          <p>At NUNP, we believe that leadership begins with responsibility and grows through participation. If you want to build practical skills while creating meaningful social impact, this is your opportunity.</p>
+        </div>
+        <div class="reveal" data-aos="fade-left" style="display:flex; align-items:center; gap: 14px; flex-wrap: wrap;">
+          <a class="btn btn-light" href="/join/">Become a Volunteer / Fellow</a>
+          <a class="btn btn-secondary" href="/volunteer/register.html" style="border-color: #fff; color: #fff;">Register Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div data-site-footer></div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.min.js"></script>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
