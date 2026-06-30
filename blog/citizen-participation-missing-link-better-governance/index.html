@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Citizen Participation: The Missing Link in Better Governance. Discover why effective governance is a partnership between public institutions and the people they serve.">
+  <meta property="og:title" content="Citizen Participation: The Missing Link in Better Governance">
+  <meta property="og:description" content="Active citizen participation is the foundation of strong governance and resilient communities.">
+  <meta property="og:image" content="/assets/citizen_participation.jpg">
+  <title>Citizen Participation: The Missing Link in Better Governance — NUNP</title>
+  <meta name="theme-color" content="#132D4D">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--navy);
+    }
+    .article-content p {
+      margin-bottom: 1.6rem;
+    }
+    .article-content h2 {
+      font-size: 1.8rem;
+      margin: 2.5rem 0 1.2rem;
+      color: var(--navy);
+      border-bottom: 2px solid rgba(59, 162, 160, 0.15);
+      padding-bottom: 8px;
+    }
+    .article-content h3 {
+      font-size: 1.35rem;
+      margin: 2rem 0 1rem;
+      color: var(--navy);
+    }
+    .callout-box {
+      background: rgba(59, 162, 160, 0.06);
+      border-left: 5px solid var(--teal);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 24px;
+      margin: 2rem 0;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(19, 45, 77, 0.1);
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 14px 18px;
+      text-align: left;
+    }
+    .comparison-table th {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .comparison-table tr:nth-child(even) {
+      background: var(--soft-bg);
+    }
+    .comparison-table td {
+      border-bottom: 1px solid rgba(19, 45, 77, 0.08);
+      color: var(--text);
+    }
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 2rem 0;
+    }
+    .role-card-mini {
+      background: #fff;
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(19, 45, 77, 0.08);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .role-card-mini h4 {
+      color: var(--navy);
+      font-size: 1.1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .role-card-mini p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .checklist-card {
+      background: linear-gradient(135deg, rgba(59, 162, 160, 0.08) 0%, rgba(19, 45, 77, 0.03) 100%);
+      border: 1px solid rgba(59, 162, 160, 0.2);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin: 2rem 0;
+    }
+    .checklist-card h3 {
+      margin-top: 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .checklist-item:last-child {
+      margin-bottom: 0;
+    }
+    .checklist-item i {
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 24px;
+      transition: transform 0.2s ease;
+    }
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+    
+    /* Unique elements for this blog page */
+    .pillar-card {
+      background: #ffffff;
+      border: 1px solid rgba(19, 45, 77, 0.06);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pillar-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(59, 162, 160, 0.1);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pillar-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .pillar-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .group-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 2rem 0;
+    }
+    .group-tag {
+      background: var(--soft-bg);
+      border: 1px solid rgba(19, 45, 77, 0.08);
+      border-radius: 30px;
+      padding: 10px 18px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    .group-tag:hover {
+      background: var(--teal);
+      color: #ffffff;
+      border-color: var(--teal);
+    }
+
+    @media (max-width: 768px) {
+      .role-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .group-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+  </style>
+</head>
+<body data-page="blog">
+  <div data-site-header></div>
+  <main>
+    <section class="hero hero-dark">
+      <div class="container reveal" data-aos="fade-up">
+        <a href="/blog/" class="back-btn"><i data-lucide="arrow-left"></i> Back to Blog</a>
+        <div class="eyebrow dark">Citizen Participation · Learn</div>
+        <h1 style="font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.2; margin-top: 10px;">Citizen Participation: The Missing Link in Better Governance</h1>
+        <div class="article-meta">
+          <span><i data-lucide="folder"></i> Citizen Participation</span>
+          <span><i data-lucide="book-open"></i> Content Pillar: Learn</span>
+          <span><i data-lucide="clock"></i> 7–9 Minutes Read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-container">
+          <article class="article-content reveal" data-aos="fade-up">
+            <!-- Featured Image -->
+            <div style="margin-bottom: 2.5rem; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-strong);">
+              <img src="/assets/citizen_participation.jpg" alt="Citizen Participation: The Missing Link in Better Governance" style="width: 100%; height: auto; display: block;">
+            </div>
+
+            <p class="lead" style="font-size: 1.25rem; line-height: 1.7; color: var(--navy); font-weight: 500;">
+              Governance is often viewed as the responsibility of governments alone. In reality, effective governance is a partnership between public institutions and the people they serve.
+            </p>
+
+            <h2>Good Governance Requires More Than Good Policies</h2>
+            <p>Governments design policies, allocate budgets, and deliver public services to improve the lives of citizens. However, even the best-designed policies cannot achieve their full potential without one essential element: <strong>active citizen participation</strong>.</p>
+            <p>When citizens actively participate by sharing feedback, identifying challenges, supporting local initiatives, and contributing ideas, governments are better equipped to make informed decisions and deliver meaningful outcomes. Better governance begins with better collaboration.</p>
+
+            <h2>What Is Citizen Participation?</h2>
+            <p>Citizen participation is the active involvement of people in the decisions and activities that affect their communities. It is not limited to elections; rather, it is an ongoing process that strengthens democracy and improves governance throughout the year.</p>
+            
+            <p>Participation can take many forms, including:</p>
+            
+            <div class="role-grid">
+              <div class="role-card-mini">
+                <h4><i data-lucide="file-text"></i> Feedback Surveys</h4>
+                <p>Sharing feedback on public services and community initiatives through structured surveys.</p>
+              </div>
+              <div class="role-card-mini">
+                <h4><i data-lucide="users"></i> Public Consultations</h4>
+                <p>Attending public consultations and town halls to represent community interests.</p>
+              </div>
+              <div class="role-card-mini">
+                <h4><i data-lucide="heart"></i> Community Volunteering</h4>
+                <p>Volunteering for local neighborhood development projects and community support programs.</p>
+              </div>
+              <div class="role-card-mini">
+                <h4><i data-lucide="megaphone"></i> Awareness Campaigns</h4>
+                <p>Participating in civic education, health, safety, and wellness campaigns.</p>
+              </div>
+              <div class="role-card-mini">
+                <h4><i data-lucide="flag"></i> Civic Reporting</h4>
+                <p>Reporting civic issues like road hazards, waste build-up, and safety risks responsibly to local authorities.</p>
+              </div>
+              <div class="role-card-mini">
+                <h4><i data-lucide="landmark"></i> Local Collaboration</h4>
+                <p>Collaborating with local institutions and resident welfare associations to build better solutions.</p>
+              </div>
+            </div>
+
+            <h2>Why Participation Matters</h2>
+            <p>Policies are most effective when they reflect the realities of the people they are intended to serve. Citizens experience public services every day. They understand local challenges, changing needs, and emerging priorities. Their insights provide valuable information that may not always be visible through official reports or statistics alone.</p>
+            
+            <div class="callout-box">
+              <h3 style="margin-top: 0; display: flex; align-items: center; gap: 10px; color: var(--navy);"><i data-lucide="lightbulb" style="color: var(--teal);"></i> Impact of Constructive Feedback</h3>
+              <p>When governments receive timely, constructive feedback from their citizens, they can:</p>
+              <ul style="margin-bottom: 0; padding-left: 20px; display: grid; gap: 8px;">
+                <li><strong>Better understand community needs</strong> by listening to direct experiences.</li>
+                <li><strong>Prioritize resources more effectively</strong> toward high-impact areas.</li>
+                <li><strong>Improve service delivery</strong> through continuous customer/citizen loops.</li>
+                <li><strong>Address issues earlier</strong> before they escalate into major crises.</li>
+                <li><strong>Build greater public trust</strong> through transparent communication.</li>
+              </ul>
+            </div>
+            
+            <p>Ultimately, citizen participation helps transform governance from reactive administration into responsive leadership.</p>
+
+            <h2>Communities Know Their Own Challenges</h2>
+            <p>No one understands a neighborhood better than the people who live there. Residents often identify issues long before they become major problems. When citizens actively communicate these observations through appropriate channels, local institutions gain valuable information that supports better planning and decision-making.</p>
+            <p>Participation begins with observation and responsible communication. Key areas where community insights drive action include:</p>
+            
+            <ul style="list-style-type: none; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 1.5rem 0;">
+              <li style="display: flex; align-items: center; gap: 8px;"><i data-lucide="check-circle" style="color: var(--teal); flex-shrink: 0;"></i> <span>Accessibility concerns</span></li>
+              <li style="display: flex; align-items: center; gap: 8px;"><i data-lucide="check-circle" style="color: var(--teal); flex-shrink: 0;"></i> <span>Public health awareness needs</span></li>
+              <li style="display: flex; align-items: center; gap: 8px;"><i data-lucide="check-circle" style="color: var(--teal); flex-shrink: 0;"></i> <span>Waste management challenges</span></li>
+              <li style="display: flex; align-items: center; gap: 8px;"><i data-lucide="check-circle" style="color: var(--teal); flex-shrink: 0;"></i> <span>Road safety issues</span></li>
+              <li style="display: flex; align-items: center; gap: 8px;"><i data-lucide="check-circle" style="color: var(--teal); flex-shrink: 0;"></i> <span>Water supply concerns</span></li>
+              <li style="display: flex; align-items: center; gap: 8px;"><i data-lucide="check-circle" style="color: var(--teal); flex-shrink: 0;"></i> <span>Public space utilization</span></li>
+              <li style="display: flex; align-items: center; gap: 8px;"><i data-lucide="check-circle" style="color: var(--teal); flex-shrink: 0;"></i> <span>Youth engagement opportunities</span></li>
+            </ul>
+
+            <h2>Participation Strengthens Accountability</h2>
+            <p>Transparency and accountability are fundamental principles of good governance. Citizen participation contributes to both. When people actively monitor public initiatives, ask informed questions, and engage constructively, governance becomes more transparent.</p>
+            <p>This does not mean criticizing every decision. It means participating responsibly by:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 2rem 0;">
+              <div class="pillar-card">
+                <div class="pillar-header">
+                  <div class="pillar-icon"><i data-lucide="search"></i></div>
+                  <h4 class="pillar-title">Seek Information</h4>
+                </div>
+                <p class="pillar-desc">Seeking accurate information rather than repeating rumors.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-header">
+                  <div class="pillar-icon"><i data-lucide="book-open"></i></div>
+                  <h4 class="pillar-title">Understand</h4>
+                </div>
+                <p class="pillar-desc">Understanding public processes and policy constraints.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-header">
+                  <div class="pillar-icon"><i data-lucide="file-bar-chart"></i></div>
+                  <h4 class="pillar-title">Evidence Feedback</h4>
+                </div>
+                <p class="pillar-desc">Providing evidence-based and constructive feedback.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-header">
+                  <div class="pillar-icon"><i data-lucide="wrench"></i></div>
+                  <h4 class="pillar-title">Support Solutions</h4>
+                </div>
+                <p class="pillar-desc">Supporting practical, collaborative solutions.</p>
+              </div>
+            </div>
+            
+            <p>Constructive participation encourages continuous improvement while strengthening public confidence in institutions.</p>
+
+            <h2>Better Policies Are Built Through Better Conversations</h2>
+            <p>Policies are more effective when diverse perspectives are considered. Meaningful participation allows decision-makers to understand diverse experiences before implementing solutions. Dialogue creates better understanding, which creates better policy, leading to better outcomes.</p>
+            
+            <p style="text-align: center; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem;">We build policies for everyone by listening to:</p>
+            <div class="group-grid">
+              <div class="group-tag">Students</div>
+              <div class="group-tag">Parents</div>
+              <div class="group-tag">Professionals</div>
+              <div class="group-tag">Senior Citizens</div>
+              <div class="group-tag">Volunteers</div>
+              <div class="group-tag">Community Orgs</div>
+            </div>
+
+            <h2>Technology Has Expanded Opportunities to Participate</h2>
+            <p>Digital platforms have made citizen participation more accessible than ever before. Technology cannot replace meaningful participation, but it can make participation faster, broader, and more inclusive. Digital citizenship and civic participation increasingly go hand in hand.</p>
+            <p>Today, communities can contribute through:</p>
+            
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Participation Channel</th>
+                  <th>Digital Enablement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Surveys & Forms</strong></td>
+                  <td>Online surveys and digital feedback forms for instant reach.</td>
+                </tr>
+                <tr>
+                  <td><strong>Consultations</strong></td>
+                  <td>Digital public consultation platforms that run 24/7.</td>
+                </tr>
+                <tr>
+                  <td><strong>Discussions</strong></td>
+                  <td>Community discussion forums that connect neighbors online.</td>
+                </tr>
+                <tr>
+                  <td><strong>Civic Education</strong></td>
+                  <td>Online webinars, infographics, and civic education initiatives.</td>
+                </tr>
+                <tr>
+                  <td><strong>Social Media</strong></td>
+                  <td>Responsible social media campaigns to mobilize volunteers and raise issues.</td>
+                </tr>
+                <tr>
+                  <td><strong>Assessments</strong></td>
+                  <td>Mobile data collection and community assessments.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2>Young Citizens Have an Important Role</h2>
+            <p>Young people are not simply future citizens. They are active citizens today. Students and young professionals bring fresh ideas, technological skills, creativity, and energy to community development. By participating early, young people develop leadership skills while strengthening democratic participation.</p>
+            
+            <p>Young people can contribute significantly by:</p>
+            <ul style="list-style-type: none; padding-left: 0; display: grid; gap: 12px; margin-bottom: 24px;">
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px;"></i> <span>Conducting community assessments and door-to-door surveys</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px;"></i> <span>Supporting health, safety, and wellness awareness initiatives</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px;"></i> <span>Facilitating civic education programs in schools and colleges</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px;"></i> <span>Collecting and analyzing community data for local development</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px;"></i> <span>Organizing youth engagement activities and volunteer drives</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px;"></i> <span>Promoting responsible digital citizenship and verification of online information</span></li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;"><i data-lucide="check-circle-2" style="color: var(--teal); flex-shrink: 0; margin-top: 4px;"></i> <span>Assisting local institutions with development and digitalization projects</span></li>
+            </ul>
+
+            <h2>Participation Builds Stronger Communities</h2>
+            <p>Communities become more resilient when citizens work together rather than waiting for solutions. Active participation creates greater trust, better collaboration, shared ownership, faster problem identification, and more sustainable solutions.</p>
+            <p>When people feel heard, they are more likely to contribute. When communities contribute, governance becomes stronger. Participation transforms citizens from observers into partners.</p>
+
+            <div class="checklist-card" style="border-color: var(--navy); background: linear-gradient(135deg, rgba(19, 45, 77, 0.04) 0%, rgba(59, 162, 160, 0.04) 100%);">
+              <h3 style="display: flex; align-items: center; gap: 10px; color: var(--navy);"><i data-lucide="award" style="color: var(--teal);"></i> The NUNP Perspective</h3>
+              <p>At NUNP (நம்ம ஊர் நம்ம பொறுப்பு), we believe that governance is strongest when citizens and institutions work together. Our mission is to encourage informed, constructive, and responsible civic participation.</p>
+              <p>Through community surveys, civic education, health and wellness initiatives, youth fellowships, digital engagement, and leadership development programs, we aim to empower citizens with the knowledge and skills to become active contributors to community development.</p>
+              <p style="margin-bottom: 0; font-weight: 600; color: var(--navy);">Our philosophy is simple: Strong governance begins with engaged citizens. When citizens connect, share ideas, and participate responsibly, communities become more capable of creating meaningful and lasting change.</p>
+            </div>
+
+            <h2>Conclusion</h2>
+            <p>Better governance cannot be achieved by governments alone. It requires active citizens who are willing to participate, collaborate, and contribute responsibly. Citizen participation is not about opposing institutions; it is about strengthening them.</p>
+            
+            <p>Every action helps create policies that are more responsive, communities that are more resilient, and governance that is more effective. This includes:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0;">
+              <span style="background: rgba(59, 162, 160, 0.1); color: var(--teal); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Surveys Completed</span>
+              <span style="background: rgba(59, 162, 160, 0.1); color: var(--teal); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Suggestions Shared</span>
+              <span style="background: rgba(59, 162, 160, 0.1); color: var(--teal); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Community Assessments</span>
+              <span style="background: rgba(59, 162, 160, 0.1); color: var(--teal); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Volunteer Initiatives</span>
+              <span style="background: rgba(59, 162, 160, 0.1); color: var(--teal); padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Informed Conversations</span>
+            </div>
+
+            <p>Because the missing link in better governance is not more policies. <strong>It is more participation.</strong></p>
+
+            <h2>Be an Active Citizen</h2>
+            <p>Every voice has the power to improve a community. Whether you participate through community surveys, civic education, volunteer initiatives, digital engagement, or local development projects, your contribution matters. At NUNP, we believe responsible citizens are essential partners in building transparent, inclusive, and effective governance.</p>
+            
+            <p style="font-size: 1.4rem; font-weight: 800; text-align: center; color: var(--teal); margin: 2rem 0; font-family: 'Montserrat', sans-serif;">NUNP – Connect. Share. Empower.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-band section-dark section tight">
+      <div class="container split-grid columns-2">
+        <div class="reveal" data-aos="fade-up">
+          <div class="eyebrow dark">Join the Movement</div>
+          <h2>Join the NUNP Movement</h2>
+          <p>Every community improves when ordinary people choose to take responsibility instead of waiting for someone else. Become part of a growing movement of citizens who believe that learning should lead to action.</p>
+        </div>
+        <div class="reveal" data-aos="fade-left" style="display:flex; align-items:center; gap: 14px; flex-wrap: wrap;">
+          <a class="btn btn-light" href="/join/">Join Now</a>
+          <a class="btn btn-secondary" href="/volunteer/register.html" style="border-color: #fff; color: #fff;">Become a Volunteer</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div data-site-footer></div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.min.js"></script>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
