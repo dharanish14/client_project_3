@@ -1,7 +1,15 @@
 (() => {
   const navData = [
     { label: 'Home', href: '/', key: 'home' },
-    { label: 'About', href: '/about/', key: 'about' },
+    {
+      label: 'About Us',
+      href: '/about/',
+      key: 'about',
+      dropdown: [
+        { label: 'About NUNP', href: '/about/', key: 'about-us' },
+        { label: 'Knowledge Partners', href: '/knowledge-partners/', key: 'knowledge-partners' }
+      ]
+    },
     {
       label: 'Programs',
       href: '/programs/',
@@ -195,6 +203,10 @@
 
     if (programPages.has(page) || page === 'volunteer') {
       document.querySelectorAll('[data-nav="programs"]').forEach((link) => link.classList.add('is-active'));
+    }
+
+    if (page === 'about' || page === 'knowledge-partners') {
+      document.querySelectorAll('[data-nav="about"]').forEach((link) => link.classList.add('is-active'));
     }
   };
 
