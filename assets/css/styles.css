@@ -173,6 +173,7 @@ p { margin: 0 0 1rem; color: var(--muted); }
   color: var(--navy);
   font-weight: 600;
   transition: background .2s ease, color .2s ease, transform .2s ease;
+  white-space: nowrap;
 }
 
 .nav-link:hover,
