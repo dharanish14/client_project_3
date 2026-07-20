@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Community Survey Guide: Collecting Data That Creates Change. Learn NUNP's guide on community surveys, data collection, and evidence-based volunteer action.">
+  <meta property="og:title" content="Community Survey Guide: Collecting Data That Creates Change">
+  <meta property="og:description" content="Surveys help volunteers move beyond opinions and gather real information from people who experience community challenges every day.">
+  <meta property="og:image" content="/assets/community_survey_guide.jpg">
+  <title>Community Survey Guide: Collecting Data That Creates Change — NUNP</title>
+  <meta name="theme-color" content="#132D4D">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--navy);
+    }
+    .article-content p {
+      margin-bottom: 1.6rem;
+    }
+    .article-content h2 {
+      font-size: 1.8rem;
+      margin: 2.5rem 0 1.2rem;
+      color: var(--navy);
+      border-bottom: 2px solid rgba(59, 162, 160, 0.15);
+      padding-bottom: 8px;
+    }
+    .article-content h3 {
+      font-size: 1.35rem;
+      margin: 2rem 0 1rem;
+      color: var(--navy);
+    }
+    .callout-box {
+      background: rgba(59, 162, 160, 0.06);
+      border-left: 5px solid var(--teal);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 24px;
+      margin: 2rem 0;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(19, 45, 77, 0.1);
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 14px 18px;
+      text-align: left;
+    }
+    .comparison-table th {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .comparison-table tr:nth-child(even) {
+      background: var(--soft-bg);
+    }
+    .comparison-table td {
+      border-bottom: 1px solid rgba(19, 45, 77, 0.08);
+      color: var(--text);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 2.5rem 0;
+    }
+    .step-card {
+      background: #fff;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(19, 45, 77, 0.08);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+    .step-card h3 {
+      color: var(--navy);
+      font-size: 1.25rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .step-card h3 span.num {
+      background: var(--teal);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-card p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .step-card ul {
+      margin: 8px 0 0 0;
+      padding-left: 20px;
+      font-size: 0.95rem;
+      color: var(--text);
+      display: grid;
+      gap: 6px;
+    }
+    .checklist-card {
+      background: linear-gradient(135deg, rgba(59, 162, 160, 0.08) 0%, rgba(19, 45, 77, 0.03) 100%);
+      border: 1px solid rgba(59, 162, 160, 0.2);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin: 2rem 0;
+    }
+    .checklist-card h3 {
+      margin-top: 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .checklist-item:last-child {
+      margin-bottom: 0;
+    }
+    .checklist-item i {
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 24px;
+      transition: transform 0.2s ease;
+    }
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+    .formula-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 2.5rem 0;
+      padding: 20px;
+      background: var(--soft-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(19, 45, 77, 0.06);
+    }
+    .formula-step {
+      background: var(--navy);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .formula-arrow {
+      color: var(--teal);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 1.5rem 0;
+    }
+    .skill-item {
+      background: var(--soft-bg);
+      border: 1px solid rgba(19, 45, 77, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-item i {
+      color: var(--teal);
+    }
+    @media (max-width: 600px) {
+      .formula-flow {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .formula-arrow {
+        transform: rotate(90deg);
+        margin: 4px 0;
+      }
+    }
+  </style>
+</head>
+<body data-page="blog">
+  <div data-site-header></div>
+  <main>
+    <section class="hero hero-dark">
+      <div class="container reveal" data-aos="fade-up">
+        <a href="/blog/" class="back-btn"><i data-lucide="arrow-left"></i> Back to Blog</a>
+        <div class="eyebrow dark">Volunteer Resources · Guide</div>
+        <h1 style="font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.2; margin-top: 10px;">Community Survey Guide: Collecting Data That Creates Change</h1>
+        <div class="article-meta">
+          <span><i data-lucide="folder"></i> Volunteer Resources</span>
+          <span><i data-lucide="book-open"></i> Content Pillar: Guide</span>
+          <span><i data-lucide="clock"></i> 8–10 Minutes Read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-container">
+          <article class="article-content reveal" data-aos="fade-up">
+            <div style="margin-bottom: 2rem; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-strong);">
+              <img src="/assets/community_survey_guide.jpg" alt="Community Survey Guide Infographic" style="width: 100%; height: auto; display: block;">
+            </div>
+
+            <p class="lead" style="font-size: 1.25rem; line-height: 1.7; color: var(--navy); font-weight: 500;">Every Great Community Project Begins with Understanding</p>
+
+            <p>Communities face many challenges, but meaningful solutions cannot be built on assumptions.</p>
+            <p>Before launching a new initiative, organizing volunteers, or recommending improvements, one important question should always be asked:</p>
+            <blockquote style="border-left: 4px solid var(--teal); padding-left: 16px; margin: 1.5rem 0; font-style: italic; font-size: 1.15rem; color: var(--navy); font-weight: 600;">
+              "What does the community actually need?"
+            </blockquote>
+            <p>The best way to answer that question is through a well-planned community survey.</p>
+            <p>Surveys help volunteers move beyond opinions and gather real information from the people who experience community challenges every day.</p>
+
+            <div class="callout-box" style="text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--navy);">
+              <p style="margin: 0;">Good data leads to better decisions.<br><span style="color: var(--teal);">Better decisions create greater impact.</span></p>
+            </div>
+
+            <h2>Why Community Surveys Matter</h2>
+            <p>Community surveys give citizens an opportunity to share their experiences, concerns, and ideas.</p>
+            <p>Instead of guessing what people need, surveys provide evidence that helps organizations and leaders understand local priorities. A well-designed survey can help:</p>
+            
+            <ul style="margin-bottom: 24px; padding-left: 20px; display: grid; gap: 8px;">
+              <li><strong>Identify community needs</strong> — Pinpoint exact gaps and priorities in neighborhoods.</li>
+              <li><strong>Understand public opinions</strong> — Hear diverse voices across different demographics.</li>
+              <li><strong>Measure awareness levels</strong> — Assess public knowledge regarding civic services or health initiatives.</li>
+              <li><strong>Prioritize local issues</strong> — Focus volunteer efforts where they are needed most urgently.</li>
+              <li><strong>Evaluate existing services</strong> — Gather feedback on ongoing programs and civic facilities.</li>
+              <li><strong>Support future planning</strong> — Provide hard evidence for long-term community development.</li>
+            </ul>
+            <p>Every meaningful community project becomes stronger when it is supported by reliable information.</p>
+
+            <div class="callout-box">
+              <h3 style="margin-top: 0; display: flex; align-items: center; gap: 10px; color: var(--navy);"><i data-lucide="heart-handshake" style="color: var(--teal);"></i> A Volunteer Is More Than a Helper</h3>
+              <p>Many people believe volunteering simply means offering time. At NUNP, we believe volunteers also serve as <strong>community listeners</strong>.</p>
+              <p>By conducting surveys respectfully and accurately, volunteers become the bridge between citizens and community solutions.</p>
+              <p>Their responsibility is not to influence answers. It is to <strong>understand people</strong>. Every response collected represents a real experience that deserves to be heard.</p>
+            </div>
+
+            <h2>The 7 Steps to Conducting Effective Community Surveys</h2>
+
+            <div class="steps-grid">
+              <!-- Step 1 -->
+              <div class="step-card">
+                <h3><span class="num">1</span> <i data-lucide="target"></i> Define the Objective</h3>
+                <p>Before creating a questionnaire, clearly identify the purpose of the survey.</p>
+                <p><strong>Ask yourself:</strong></p>
+                <ul>
+                  <li>What information do we need?</li>
+                  <li>Why is this survey important?</li>
+                  <li>How will the findings be used?</li>
+                </ul>
+                <p><strong>Examples of survey objectives include:</strong></p>
+                <ul>
+                  <li>Understanding youth aspirations</li>
+                  <li>Assessing health and wellness awareness</li>
+                  <li>Identifying civic participation levels</li>
+                  <li>Evaluating digital literacy</li>
+                  <li>Gathering feedback on local services</li>
+                  <li>Understanding community development priorities</li>
+                </ul>
+                <p>A focused objective leads to meaningful results.</p>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card">
+                <h3><span class="num">2</span> <i data-lucide="message-square"></i> Ask Simple and Clear Questions</h3>
+                <p>Good surveys are easy to understand. Avoid technical language, complicated wording, or questions that suggest a preferred answer.</p>
+
+                <table class="comparison-table" style="margin-top: 1rem; margin-bottom: 1rem;">
+                  <thead>
+                    <tr>
+                      <th>Avoid (Leading Question)</th>
+                      <th>Prefer (Neutral Question)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><em>"Don't you agree that community participation should increase?"</em></td>
+                      <td><em>"How would you describe the current level of community participation in your area?"</em></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>Simple questions produce more accurate responses.</p>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card">
+                <h3><span class="num">3</span> <i data-lucide="ear"></i> Listen Without Judging</h3>
+                <p>A survey is an opportunity to listen—not debate. Volunteers should:</p>
+                <ul>
+                  <li>Respect every opinion.</li>
+                  <li>Remain neutral.</li>
+                  <li>Avoid interrupting.</li>
+                  <li>Never argue with respondents.</li>
+                  <li>Thank participants for their time.</li>
+                </ul>
+                <p>People are more likely to provide honest feedback when they feel respected and valued. Listening is one of the most important skills a volunteer can develop.</p>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card">
+                <h3><span class="num">4</span> <i data-lucide="edit-3"></i> Record Information Accurately</h3>
+                <p>Survey results are only useful when they are recorded correctly. Always:</p>
+                <ul>
+                  <li>Capture responses carefully.</li>
+                  <li>Avoid making assumptions.</li>
+                  <li>Verify unclear answers politely.</li>
+                  <li>Keep records organized.</li>
+                  <li>Protect respondent privacy.</li>
+                </ul>
+                <p>Accurate data creates trustworthy insights.</p>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="step-card">
+                <h3><span class="num">5</span> <i data-lucide="shield-check"></i> Maintain Ethics and Confidentiality</h3>
+                <p>Trust is essential in community work. Volunteers should always explain:</p>
+                <ul>
+                  <li>Why the survey is being conducted.</li>
+                  <li>How the information will be used.</li>
+                  <li>That participation is voluntary.</li>
+                  <li>That personal information will remain confidential when appropriate.</li>
+                </ul>
+                <p>Ethical surveys encourage greater participation and strengthen community trust.</p>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="step-card">
+                <h3><span class="num">6</span> <i data-lucide="eye"></i> Observe Beyond the Questionnaire</h3>
+                <p>Sometimes the most valuable insights come from careful observation. While conducting surveys, volunteers should also notice:</p>
+                <ul>
+                  <li>Accessibility challenges</li>
+                  <li>Public infrastructure conditions</li>
+                  <li>Community facilities</li>
+                  <li>Health and wellness resources</li>
+                  <li>Public spaces</li>
+                  <li>Youth engagement opportunities</li>
+                </ul>
+                <p>These observations help provide valuable context to survey findings.</p>
+              </div>
+
+              <!-- Step 7 -->
+              <div class="step-card">
+                <h3><span class="num">7</span> <i data-lucide="lightbulb"></i> Transform Data into Action</h3>
+                <p>Collecting information is only the beginning. The real purpose of a survey is to create positive change. After data collection:</p>
+                <ul>
+                  <li>Organize responses.</li>
+                  <li>Identify patterns.</li>
+                  <li>Prepare summary reports.</li>
+                  <li>Share findings responsibly.</li>
+                  <li>Recommend practical actions.</li>
+                  <li>Support future community projects.</li>
+                </ul>
+                <p>Data becomes meaningful when it informs decisions.</p>
+              </div>
+            </div>
+
+            <h2>The Survey Process Workflow</h2>
+            <p>Successful survey campaigns follow a clear flow from start to finish:</p>
+            
+            <div class="formula-flow">
+              <div class="formula-step">1. Define Objective</div>
+              <div class="formula-arrow"><i data-lucide="arrow-right"></i></div>
+              <div class="formula-step">2. Clear Questions</div>
+              <div class="formula-arrow"><i data-lucide="arrow-right"></i></div>
+              <div class="formula-step">3. Listen Respectfully</div>
+              <div class="formula-arrow"><i data-lucide="arrow-right"></i></div>
+              <div class="formula-step">4. Record Accurately</div>
+              <div class="formula-arrow"><i data-lucide="arrow-right"></i></div>
+              <div class="formula-step">5. Maintain Ethics</div>
+              <div class="formula-arrow"><i data-lucide="arrow-right"></i></div>
+              <div class="formula-step">6. Turn Data into Action</div>
+            </div>
+
+            <h2>Common Mistakes Volunteers Should Avoid</h2>
+            <p>Even well-intentioned volunteers can make mistakes. Avoid these common challenges:</p>
+            <ul style="list-style-type: none; padding-left: 0; display: grid; gap: 16px; margin: 2rem 0;">
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <i data-lucide="x-circle" style="color: #ef4444; flex-shrink: 0; margin-top: 3px;"></i>
+                <div><strong>Asking leading questions:</strong> Influencing responses instead of remaining neutral.</div>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <i data-lucide="x-circle" style="color: #ef4444; flex-shrink: 0; margin-top: 3px;"></i>
+                <div><strong>Rushing interviews:</strong> Not allowing respondents enough time to express their true views.</div>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <i data-lucide="x-circle" style="color: #ef4444; flex-shrink: 0; margin-top: 3px;"></i>
+                <div><strong>Ignoring respondents' concerns:</strong> Dismissing opinions that do not fit personal beliefs.</div>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <i data-lucide="x-circle" style="color: #ef4444; flex-shrink: 0; margin-top: 3px;"></i>
+                <div><strong>Recording incomplete information:</strong> Skipping details or substituting assumptions.</div>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <i data-lucide="x-circle" style="color: #ef4444; flex-shrink: 0; margin-top: 3px;"></i>
+                <div><strong>Making assumptions:</strong> Filling in missing answers based on personal bias.</div>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <i data-lucide="x-circle" style="color: #ef4444; flex-shrink: 0; margin-top: 3px;"></i>
+                <div><strong>Failing to protect privacy:</strong> Neglecting confidentiality or mishandling sensitive data.</div>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <i data-lucide="x-circle" style="color: #ef4444; flex-shrink: 0; margin-top: 3px;"></i>
+                <div><strong>Collecting data without a clear purpose:</strong> Gathering information without a plan to act on it.</div>
+              </li>
+            </ul>
+            <p>Professional survey practices produce reliable results.</p>
+
+            <h2>Skills You Gain Through Community Surveys</h2>
+            <p>Conducting surveys develops valuable skills that extend far beyond volunteering. Volunteers improve their ability to:</p>
+            
+            <div class="skills-grid">
+              <div class="skill-item"><i data-lucide="check-circle"></i> Communicate effectively</div>
+              <div class="skill-item"><i data-lucide="check-circle"></i> Listen actively</div>
+              <div class="skill-item"><i data-lucide="check-circle"></i> Build trust</div>
+              <div class="skill-item"><i data-lucide="check-circle"></i> Think critically</div>
+              <div class="skill-item"><i data-lucide="check-circle"></i> Observe carefully</div>
+              <div class="skill-item"><i data-lucide="check-circle"></i> Analyze information</div>
+              <div class="skill-item"><i data-lucide="check-circle"></i> Work professionally</div>
+              <div class="skill-item"><i data-lucide="check-circle"></i> Solve community problems</div>
+            </div>
+            <p>These are lifelong leadership skills valued in education, careers, entrepreneurship, and public service.</p>
+
+            <h2>The NUNP Perspective</h2>
+            <p>At NUNP, community surveys are more than research activities.</p>
+            <p>They are opportunities to understand people, strengthen civic participation, and build evidence-based community solutions.</p>
+            <p>Our volunteers conduct surveys, assessments, health and wellness studies, youth engagement research, and civic awareness initiatives that help communities identify priorities and create measurable impact.</p>
+            
+            <div class="checklist-card" style="margin: 2rem 0;">
+              <div class="checklist-item"><i data-lucide="sparkles"></i> <span><strong>Every conversation</strong> becomes an opportunity to learn.</span></div>
+              <div class="checklist-item"><i data-lucide="sparkles"></i> <span><strong>Every response</strong> becomes an opportunity to improve.</span></div>
+              <div class="checklist-item"><i data-lucide="sparkles"></i> <span><strong>Every survey</strong> becomes a step toward stronger communities.</span></div>
+            </div>
+
+            <h2>Conclusion</h2>
+            <p>Meaningful community development begins with understanding.</p>
+            <p>Community surveys help volunteers replace assumptions with facts and transform observations into practical action. By listening carefully, collecting accurate information, and respecting every participant, volunteers become trusted partners in community development.</p>
+            
+            <div class="callout-box" style="border-left-color: var(--navy); background: rgba(19, 45, 77, 0.04);">
+              <p style="margin: 0; font-weight: 600; color: var(--navy);">Remember:</p>
+              <p style="margin: 8px 0 0 0; font-size: 1.1rem; color: var(--navy);">
+                The quality of every community solution depends on the quality of the information behind it.<br>
+                <strong>Collect good data. Build better understanding. Create lasting change.</strong>
+              </p>
+            </div>
+
+            <div class="checklist-card" style="background: linear-gradient(135deg, var(--navy) 0%, #1e4570 100%); color: #fff;">
+              <h3 style="color: #fff; display: flex; align-items: center; gap: 10px;"><i data-lucide="users" style="color: var(--teal);"></i> Become a Community Research Volunteer</h3>
+              <p style="color: rgba(255,255,255,0.9);">Every conversation can create insight. Every survey can reveal an opportunity. Every volunteer can contribute to stronger communities through responsible data collection and active listening.</p>
+              <p style="color: rgba(255,255,255,0.9); font-weight: 500;">At NUNP, we believe informed action begins with understanding people.</p>
+              <div style="margin-top: 20px; font-weight: 700; font-size: 1.1rem; color: var(--teal); letter-spacing: 0.5px;">
+                NUNP – Connect. Share. Empower.
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-band section-dark section tight">
+      <div class="container split-grid columns-2">
+        <div class="reveal" data-aos="fade-up">
+          <div class="eyebrow dark">Join the Movement</div>
+          <h2>Join the NUNP Movement</h2>
+          <p>Every community improves when ordinary people choose to take responsibility instead of waiting for someone else. NUNP helps citizens become volunteers, volunteers become leaders, and leaders create lasting community impact.</p>
+        </div>
+        <div class="reveal" data-aos="fade-left" style="display:flex; align-items:center; gap: 14px; flex-wrap: wrap;">
+          <a class="btn btn-light" href="/join/">Become a Volunteer</a>
+          <a class="btn btn-secondary" href="/programs/youth-leadership-fellowship/" style="border-color: #fff; color: #fff;">Join the Youth Fellowship</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div data-site-footer></div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.min.js"></script>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
