@@ -30,14 +30,23 @@
   ];
 
   const footerLinks = [
-    'Home', 'About', 'Programs', 'Impact', 'Events', 'Blog', 'Gallery', 'Join', 'Contact'
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about/' },
+    { label: 'Programs', href: '/programs/' },
+    { label: 'Impact', href: '/impact/' },
+    { label: 'Events', href: '/events/' },
+    { label: 'Blog', href: '/blog/' },
+    { label: 'Gallery', href: '/gallery/' },
+    { label: 'Join', href: '/join/' },
+    { label: 'Contact', href: '/contact/' },
+    { label: 'Privacy Policy', href: '/privacy-policy/' }
   ];
 
   const iconMarkup = (name) => `<i data-lucide="${name}" aria-hidden="true"></i>`;
 
   const formEndpoints = window.NUNP_FORM_ENDPOINTS || {};
   const activeMembersKey = 'nunp-active-members-count';
-  const defaultActiveMembers = 101;
+  const defaultActiveMembers = 100;
   let volunteerPhotoBase64 = '';
   let volunteerPhotoType = '';
 
@@ -154,10 +163,7 @@
           <div>
             <h4>Quick Links</h4>
             <ul class="footer-links">
-              ${footerLinks.map(item => {
-                const path = item === 'Home' ? '/' : `/${item.toLowerCase()}/`;
-                return `<li><a href="${path}">${item}</a></li>`;
-              }).join('')}
+              ${footerLinks.map(item => `<li><a href="${item.href}">${item.label}</a></li>`).join('')}
             </ul>
           </div>
 
@@ -172,7 +178,7 @@
 
         <div class="footer-bottom">
           <div class="footer-bottom-inner">
-            <span>© 2026 NUNP. All Rights Reserved.</span>
+            <span>© 2026 NUNP. All Rights Reserved. · <a href="/privacy-policy/" style="color: rgba(255, 255, 255, 0.85); text-decoration: underline;">Privacy Policy</a></span>
             <span>நம்ம ஊர். நம்ம பொறுப்பு. நம்ம செயல்.</span>
           </div>
         </div>
@@ -1168,6 +1174,36 @@
     }
   };
 
+  const enhancePrivacyTOC = () => {
+    const links = document.querySelectorAll('.privacy-sidebar .toc-link');
+    if (!links.length) return;
+
+    const sections = Array.from(links).map(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return null;
+      return document.getElementById(href.substring(1));
+    }).filter(Boolean);
+
+    const onScroll = () => {
+      let currentId = '';
+      const scrollPos = window.scrollY + 130;
+
+      sections.forEach(section => {
+        if (section.offsetTop <= scrollPos) {
+          currentId = section.id;
+        }
+      });
+
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        link.classList.toggle('is-active', href === `#${currentId}`);
+      });
+    };
+
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  };
+
   const init = () => {
     initEmailJS();
     injectCommonLayout();
@@ -1182,6 +1218,7 @@
     enhanceJoinPhotoInput();
     enhanceVolunteerClick();
     renderVolunteerPageContent();
+    enhancePrivacyTOC();
     fixBrokenLogos();
     setCurrentYear();
     if (window.lucide) window.lucide.createIcons();

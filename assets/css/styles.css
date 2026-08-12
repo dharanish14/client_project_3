@@ -1073,3 +1073,32 @@ textarea { min-height: 160px; resize: vertical; }
   cursor: not-allowed;
   transform: none !important;
 }
+
+/* Privacy Policy Layout & TOC */
+.privacy-sidebar .toc-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: block;
+}
+
+.privacy-sidebar .toc-link:hover,
+.privacy-sidebar .toc-link.is-active {
+  background: rgba(59, 162, 160, 0.12);
+  color: var(--teal) !important;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .privacy-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .privacy-sidebar {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
