@@ -46,7 +46,7 @@
 
   const formEndpoints = window.NUNP_FORM_ENDPOINTS || {};
   const activeMembersKey = 'nunp-active-members-count';
-  const defaultActiveMembers = 100;
+  const defaultActiveMembers = 101;
   let volunteerPhotoBase64 = '';
   let volunteerPhotoType = '';
 
@@ -1176,7 +1176,16 @@
 
   const enhancePrivacyTOC = () => {
     const links = document.querySelectorAll('.privacy-sidebar .toc-link');
+    const detailsEl = document.querySelector('.privacy-toc-details');
     if (!links.length) return;
+
+    if (detailsEl) {
+      if (window.innerWidth < 992) {
+        detailsEl.removeAttribute('open');
+      } else {
+        detailsEl.setAttribute('open', '');
+      }
+    }
 
     const sections = Array.from(links).map(link => {
       const href = link.getAttribute('href');
@@ -1184,12 +1193,21 @@
       return document.getElementById(href.substring(1));
     }).filter(Boolean);
 
+    // Auto-close accordion on mobile when link is clicked
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        if (detailsEl && window.innerWidth < 992) {
+          detailsEl.removeAttribute('open');
+        }
+      });
+    });
+
     const onScroll = () => {
       let currentId = '';
       const scrollPos = window.scrollY + 130;
 
       sections.forEach(section => {
-        if (section.offsetTop <= scrollPos) {
+        if (section && section.offsetTop <= scrollPos) {
           currentId = section.id;
         }
       });

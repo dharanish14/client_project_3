@@ -41,39 +41,47 @@
     <!-- Main Content Grid -->
     <section class="section" style="background: #f8fafc; padding: 60px 0;">
       <div class="container" style="max-width: 1140px;">
-        <div style="display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start;" class="privacy-layout">
+        <div class="privacy-layout">
           
-          <!-- Sticky Navigation Sidebar -->
-          <aside class="privacy-sidebar reveal" data-aos="fade-right" style="position: sticky; top: 90px; background: #fff; padding: 24px; border-radius: 16px; border: 1px solid rgba(19, 45, 77, 0.08); box-shadow: var(--shadow);">
-            <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-              <i data-lucide="list" style="width: 18px; height: 18px; color: var(--teal);"></i> Table of Contents
-            </h4>
-            <nav style="display: flex; flex-direction: column; gap: 6px; font-size: 0.88rem;">
-              <a href="#overview" class="toc-link">Overview</a>
-              <a href="#section-1" class="toc-link">1. Information We Collect</a>
-              <a href="#section-2" class="toc-link">2. How We Use Information</a>
-              <a href="#section-3" class="toc-link">3. Volunteer & Programmes</a>
-              <a href="#section-4" class="toc-link">4. Communications</a>
-              <a href="#section-5" class="toc-link">5. Cookies & Technologies</a>
-              <a href="#section-6" class="toc-link">6. Sharing Information</a>
-              <a href="#section-7" class="toc-link">7. Data Security</a>
-              <a href="#section-8" class="toc-link">8. Data Retention</a>
-              <a href="#section-9" class="toc-link">9. Your Rights & DPDP Act</a>
-              <a href="#section-10" class="toc-link">10. Children & Young Persons</a>
-              <a href="#section-11" class="toc-link">11. Third-Party Links</a>
-              <a href="#section-12" class="toc-link">12. Photos, Videos & Stories</a>
-              <a href="#section-13" class="toc-link">13. Policy Changes</a>
-              <a href="#section-14" class="toc-link">14. Governing Law</a>
-              <a href="#section-15" class="toc-link">15. Contact Us</a>
-              <a href="#section-16" class="toc-link">16. Consent & Withdrawal</a>
-            </nav>
+          <!-- Sticky Navigation Sidebar (Desktop/Laptop) & Collapsible Accordion (Tablet/Mobile) -->
+          <aside class="privacy-sidebar reveal" data-aos="fade-right">
+            <details class="privacy-toc-details" open>
+              <summary class="privacy-toc-mobile-summary">
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <i data-lucide="list" style="width: 18px; height: 18px; color: var(--teal);"></i> Table of Contents
+                </span>
+                <i data-lucide="chevron-down" class="toc-chevron" style="width: 18px; height: 18px; color: var(--teal); transition: transform 0.2s;"></i>
+              </summary>
+              <h4 class="toc-title-desktop">
+                <i data-lucide="list" style="width: 18px; height: 18px; color: var(--teal);"></i> Table of Contents
+              </h4>
+              <nav style="display: flex; flex-direction: column; gap: 6px;">
+                <a href="#overview" class="toc-link">Overview</a>
+                <a href="#section-1" class="toc-link">1. Information We Collect</a>
+                <a href="#section-2" class="toc-link">2. How We Use Information</a>
+                <a href="#section-3" class="toc-link">3. Volunteer & Programmes</a>
+                <a href="#section-4" class="toc-link">4. Communications</a>
+                <a href="#section-5" class="toc-link">5. Cookies & Technologies</a>
+                <a href="#section-6" class="toc-link">6. Sharing Information</a>
+                <a href="#section-7" class="toc-link">7. Data Security</a>
+                <a href="#section-8" class="toc-link">8. Data Retention</a>
+                <a href="#section-9" class="toc-link">9. Your Rights & DPDP Act</a>
+                <a href="#section-10" class="toc-link">10. Children & Young Persons</a>
+                <a href="#section-11" class="toc-link">11. Third-Party Links</a>
+                <a href="#section-12" class="toc-link">12. Photos, Videos & Stories</a>
+                <a href="#section-13" class="toc-link">13. Policy Changes</a>
+                <a href="#section-14" class="toc-link">14. Governing Law</a>
+                <a href="#section-15" class="toc-link">15. Contact Us</a>
+                <a href="#section-16" class="toc-link">16. Consent & Withdrawal</a>
+              </nav>
+            </details>
           </aside>
 
           <!-- Policy Document Content -->
           <div class="privacy-content" style="display: flex; flex-direction: column; gap: 32px;">
 
             <!-- Overview Box -->
-            <div id="overview" class="surface reveal" data-aos="fade-up" style="border-left: 5px solid var(--teal); padding: 32px; background: #fff;">
+            <div id="overview" class="surface reveal" data-aos="fade-up" style="border-left: 5px solid var(--teal);">
               <p style="font-size: 1.1rem; line-height: 1.7; color: var(--navy); font-weight: 600; margin-bottom: 16px;">
                 <strong>NUNP – நம்ம ஊர் நம்ம பொறுப்பு</strong> (“NUNP”, “we”, “our”, or “us”) is a citizen-led community development initiative focused on youth leadership, volunteerism, civic participation and community transformation.
               </p>
@@ -87,16 +95,16 @@
             </div>
 
             <!-- Section 1 -->
-            <section id="section-1" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">1</span>
+            <section id="section-1" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">1</span>
                 INFORMATION WE MAY COLLECT
               </h2>
               <p style="color: var(--muted); margin-bottom: 20px;">Depending on how you interact with NUNP, we may collect the following information:</p>
 
               <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 12px;">1.1 Information You Provide</h3>
               <p style="color: var(--muted); margin-bottom: 14px;">You may voluntarily provide information such as:</p>
-              <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; list-style: none; padding: 0; margin-bottom: 20px;">
+              <ul class="privacy-grid-auto-240">
                 <li style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.95rem; color: var(--navy); font-weight: 500;">
                   <i data-lucide="check-circle" style="width: 16px; height: 16px; color: var(--teal); flex-shrink: 0;"></i> Full name
                 </li>
@@ -138,7 +146,7 @@
 
               <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 12px;">1.2 Information Collected Automatically</h3>
               <p style="color: var(--muted); margin-bottom: 14px;">When you visit our website, certain technical information may be collected automatically, depending on the website technologies and services we use. This may include:</p>
-              <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; list-style: none; padding: 0; margin-bottom: 16px;">
+              <ul class="privacy-grid-auto-220" style="list-style: none; padding: 0;">
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• IP address</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Browser type</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Device type</li>
@@ -153,13 +161,13 @@
             </section>
 
             <!-- Section 2 -->
-            <section id="section-2" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">2</span>
+            <section id="section-2" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">2</span>
                 HOW WE USE YOUR INFORMATION
               </h2>
               <p style="color: var(--muted); margin-bottom: 16px;">NUNP may use personal information for legitimate and specified purposes, including:</p>
-              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 20px;">
+              <div class="privacy-grid-auto-280">
                 <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; background: #f8fafc; border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; font-size: 0.92rem; color: var(--navy); font-weight: 500;">
                   <i data-lucide="arrow-right-circle" style="width: 16px; height: 16px; color: var(--teal); flex-shrink: 0; margin-top: 2px;"></i> Responding to enquiries and requests
                 </div>
@@ -215,13 +223,13 @@
             </section>
 
             <!-- Section 3 -->
-            <section id="section-3" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">3</span>
+            <section id="section-3" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">3</span>
                 VOLUNTEER AND PROGRAMME INFORMATION
               </h2>
               <p style="color: var(--muted); margin-bottom: 16px;">NUNP may conduct initiatives involving:</p>
-              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-bottom: 20px;">
+              <div class="privacy-grid-auto-220">
                 <span style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 600; text-align: center; border: 1px solid rgba(19,45,77,0.08);">Youth leadership</span>
                 <span style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 600; text-align: center; border: 1px solid rgba(19,45,77,0.08);">Community volunteering</span>
                 <span style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 600; text-align: center; border: 1px solid rgba(19,45,77,0.08);">Community development projects</span>
@@ -240,13 +248,13 @@
             </section>
 
             <!-- Section 4 -->
-            <section id="section-4" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">4</span>
+            <section id="section-4" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">4</span>
                 COMMUNICATIONS
               </h2>
               <p style="color: var(--muted); margin-bottom: 16px;">If you provide your contact information to NUNP, we may contact you regarding:</p>
-              <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; list-style: none; padding: 0; margin-bottom: 20px;">
+              <ul class="privacy-grid-auto-240">
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 500;">• Your enquiry</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 500;">• Your application or registration</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 500;">• Programme-related information</li>
@@ -264,13 +272,13 @@
             </section>
 
             <!-- Section 5 -->
-            <section id="section-5" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">5</span>
+            <section id="section-5" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">5</span>
                 COOKIES AND SIMILAR TECHNOLOGIES
               </h2>
               <p style="color: var(--muted); margin-bottom: 14px;">The NUNP website may use cookies and similar technologies to:</p>
-              <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; list-style: none; padding: 0; margin-bottom: 20px;">
+              <ul class="privacy-grid-auto-240">
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Enable essential website functionality</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Improve website performance</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Understand how visitors use the website</li>
@@ -287,9 +295,9 @@
             </section>
 
             <!-- Section 6 -->
-            <section id="section-6" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">6</span>
+            <section id="section-6" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">6</span>
                 SHARING OF PERSONAL INFORMATION
               </h2>
               <div style="background: rgba(239, 68, 68, 0.06); border-left: 4px solid #ef4444; padding: 14px 18px; border-radius: 0 8px 8px 0; font-weight: 700; color: #b91c1c; margin-bottom: 20px;">
@@ -328,13 +336,13 @@
             </section>
 
             <!-- Section 7 -->
-            <section id="section-7" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">7</span>
+            <section id="section-7" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">7</span>
                 DATA SECURITY
               </h2>
               <p style="color: var(--muted); margin-bottom: 16px;">NUNP takes reasonable measures to protect personal information against:</p>
-              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 20px;">
+              <div class="privacy-badge-grid">
                 <span style="background: rgba(59, 162, 160, 0.08); padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 600; text-align: center;">Unauthorised access</span>
                 <span style="background: rgba(59, 162, 160, 0.08); padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 600; text-align: center;">Unauthorised disclosure</span>
                 <span style="background: rgba(59, 162, 160, 0.08); padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 600; text-align: center;">Loss</span>
@@ -351,9 +359,9 @@
             </section>
 
             <!-- Section 8 -->
-            <section id="section-8" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">8</span>
+            <section id="section-8" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">8</span>
                 RETENTION OF PERSONAL INFORMATION
               </h2>
               <p style="color: var(--muted); line-height: 1.6; margin-bottom: 16px;">
@@ -368,9 +376,9 @@
             </section>
 
             <!-- Section 9 -->
-            <section id="section-9" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">9</span>
+            <section id="section-9" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">9</span>
                 YOUR RIGHTS
               </h2>
               <p style="color: var(--muted); margin-bottom: 16px;">
@@ -411,9 +419,9 @@
             </section>
 
             <!-- Section 10 -->
-            <section id="section-10" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">10</span>
+            <section id="section-10" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">10</span>
                 CHILDREN AND YOUNG PERSONS
               </h2>
               <p style="color: var(--muted); line-height: 1.6; margin-bottom: 14px;">
@@ -431,9 +439,9 @@
             </section>
 
             <!-- Section 11 -->
-            <section id="section-11" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">11</span>
+            <section id="section-11" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">11</span>
                 THIRD-PARTY WEBSITES AND SERVICES
               </h2>
               <p style="color: var(--muted); line-height: 1.6; margin-bottom: 14px;">
@@ -448,15 +456,15 @@
             </section>
 
             <!-- Section 12 -->
-            <section id="section-12" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">12</span>
+            <section id="section-12" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">12</span>
                 PHOTOGRAPHS, VIDEOS AND STORIES
               </h2>
               <p style="color: var(--muted); margin-bottom: 16px;">
                 NUNP may document community activities, programmes, events and initiatives through photographs, videos, testimonials or stories for purposes such as:
               </p>
-              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-bottom: 20px;">
+              <div class="privacy-grid-auto-220">
                 <span style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 500;">• Programme documentation</span>
                 <span style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 500;">• Community awareness</span>
                 <span style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy); font-weight: 500;">• Reporting & impact communication</span>
@@ -474,13 +482,13 @@
             </section>
 
             <!-- Section 13 -->
-            <section id="section-13" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">13</span>
+            <section id="section-13" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">13</span>
                 CHANGES TO THIS PRIVACY POLICY
               </h2>
               <p style="color: var(--muted); margin-bottom: 14px;">NUNP may update this Privacy Policy from time to time to reflect:</p>
-              <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; list-style: none; padding: 0; margin-bottom: 20px;">
+              <ul class="privacy-grid-auto-220">
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Changes in programmes/activities</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Changes in technology</li>
                 <li style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; color: var(--navy);">• Changes in data practices</li>
@@ -496,9 +504,9 @@
             </section>
 
             <!-- Section 14 -->
-            <section id="section-14" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">14</span>
+            <section id="section-14" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">14</span>
                 GOVERNING LAW
               </h2>
               <p style="color: var(--muted); line-height: 1.6; margin-bottom: 14px;">
@@ -510,34 +518,34 @@
             </section>
 
             <!-- Section 15: Contact Us -->
-            <section id="section-15" class="surface reveal" data-aos="fade-up" style="padding: 36px; background: linear-gradient(135deg, var(--navy) 0%, #1a3f6b 100%); color: #fff; border-radius: 16px; box-shadow: var(--shadow-strong);">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(255,255,255,0.15); padding-bottom: 12px;">
-                <span style="background: var(--teal); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">15</span>
+            <section id="section-15" class="surface reveal privacy-contact-card" style="background: linear-gradient(135deg, var(--navy) 0%, #1a3f6b 100%); color: #fff; border-radius: 16px; box-shadow: var(--shadow-strong);">
+              <h2 class="privacy-section-header" style="color: #fff; border-bottom: 2px solid rgba(255,255,255,0.15);">
+                <span class="privacy-section-num" style="background: var(--teal);">15</span>
                 CONTACT US
               </h2>
               <p style="color: rgba(255,255,255,0.9); line-height: 1.6; margin-bottom: 24px;">
                 If you have any questions, concerns, requests or grievances regarding this Privacy Policy or the way NUNP handles personal information, you may contact us at:
               </p>
               
-              <div style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+              <div class="privacy-contact-subcard" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
                 <div style="font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 800; color: #fff;">
                   NUNP – நம்ம ஊர் நம்ம பொறுப்பு
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px; font-size: 1rem; color: rgba(255,255,255,0.95);">
-                  <i data-lucide="user" style="width: 20px; height: 20px; color: var(--teal);"></i>
+                  <i data-lucide="user" style="width: 20px; height: 20px; color: var(--teal); flex-shrink: 0;"></i>
                   <span><strong>Founder:</strong> Mohan Kumar</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 12px; font-size: 1rem; color: rgba(255,255,255,0.95);">
-                  <i data-lucide="mail" style="width: 20px; height: 20px; color: var(--teal);"></i>
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 1rem; color: rgba(255,255,255,0.95); flex-wrap: wrap;">
+                  <i data-lucide="mail" style="width: 20px; height: 20px; color: var(--teal); flex-shrink: 0;"></i>
                   <span><strong>Email:</strong> <a href="mailto:nunp.chennai@gmail.com" style="color: #fff; text-decoration: underline;">nunp.chennai@gmail.com</a></span>
                 </div>
               </div>
             </section>
 
             <!-- Section 16: Consent -->
-            <section id="section-16" class="surface reveal" data-aos="fade-up" style="padding: 32px; background: #fff;">
-              <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(19,45,77,0.06); padding-bottom: 12px;">
-                <span style="background: var(--navy); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800;">16</span>
+            <section id="section-16" class="surface reveal" data-aos="fade-up">
+              <h2 class="privacy-section-header">
+                <span class="privacy-section-num">16</span>
                 CONSENT
               </h2>
               <p style="color: var(--muted); line-height: 1.6; margin-bottom: 14px;">
