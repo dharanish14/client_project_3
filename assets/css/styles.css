@@ -761,18 +761,36 @@ p { margin: 0 0 1rem; color: var(--muted); }
 .social-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
 }
 
 .social-icon {
   width: 42px;
   height: 42px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+  transition: all 0.25s ease;
+}
+
+.social-icon:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(59, 162, 160, 0.45);
+}
+
+.social-icon i,
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
 }
 
 .social-initial {

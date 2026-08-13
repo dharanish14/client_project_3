@@ -168,11 +168,21 @@
           </div>
 
           <div class="stack">
-            <h4>Contact</h4>
+            <h4>Contact & Social</h4>
             <ul class="footer-contact">
               <li><a href="mailto:nunp.chennai@gmail.com">nunp.chennai@gmail.com</a></li>
               <li><a href="https://www.nunp.org" target="_blank" rel="noreferrer">www.nunp.org</a></li>
             </ul>
+            <div style="margin-top: 6px;">
+              <div class="social-row">
+                <a class="social-icon" href="https://www.facebook.com/NUNPIndia" target="_blank" rel="noopener noreferrer" aria-label="NUNP Facebook Page" title="Facebook">
+                  ${iconMarkup('facebook')}
+                </a>
+                <a class="social-icon" href="https://www.instagram.com/nunp.india/" target="_blank" rel="noopener noreferrer" aria-label="NUNP Instagram Profile" title="Instagram">
+                  ${iconMarkup('instagram')}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
